@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>漫画で読む｜ぐうたら妻の夫婦修復物語</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+  :root {
+    --ink: #1a1008;
+    --warm: #8b2e0f;
+    --accent: #c94a1a;
+    --gold: #c4952a;
+    --cream: #faf6f0;
+    --muted: #6b5c4e;
+    --light: #f0e8df;
+    --panel-border: #2a1a0a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f5f0ea;
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .page-header {
+    background: linear-gradient(160deg, #1a0e06 0%, #2d1508 60%, #3d1e0a 100%);
+    color: var(--cream);
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+
+  .page-header .tag {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    padding: 4px 16px;
+    margin-bottom: 20px;
+  }
+
+  .page-header h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(20px, 4vw, 34px);
+    font-weight: 900;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+    color: rgba(250,246,240,0.65);
+    letter-spacing: 0.05em;
+  }
+
+  /* MANGA WRAPPER */
+  .manga-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+  }
+
+  /* CHAPTER TITLE */
+  .chapter {
+    text-align: center;
+    margin: 48px 0 24px;
+  }
+
+  .chapter-num {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .chapter-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(18px, 3.5vw, 26px);
+    font-weight: 900;
+    color: var(--ink);
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 6px;
+  }
+
+  /* PANEL GRID */
+  .panel-row {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .panel-row.cols-1 { grid-template-columns: 1fr; }
+  .panel-row.cols-2 { grid-template-columns: 1fr 1fr; }
+  .panel-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .panel-row.cols-2-1 { grid-template-columns: 2fr 1fr; }
+  .panel-row.cols-1-2 { grid-template-columns: 1fr 2fr; }
+
+  /* PANEL */
+  .panel {
+    background: white;
+    border: 3px solid var(--panel-border);
+    position: relative;
+    overflow: hidden;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+  }
+
+  .panel.tall { min-height: 220px; }
+  .panel.hero-panel { min-height: 280px; }
+
+  /* SCENE ILLUSTRATION (SVG / CSS art) */
+  .scene {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* SPEECH BUBBLES */
+  .bubble-wrap {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 4px;
+  }
+
+  .bubble {
+    display: inline-block;
+    background: white;
+    border: 2.5px solid var(--ink);
+    border-radius: 18px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Noto Serif JP', serif;
+    line-height: 1.6;
+    max-width: 90%;
+    position: relative;
+  }
+
+  .bubble.right {
+    background: #fff8f0;
+    border-color: var(--warm);
+  }
+
+  .bubble.thought {
+    border-style: dashed;
+    border-radius: 24px;
+    font-style: italic;
+    background: #f8f4ff;
+    border-color: #9b7bc4;
+    font-size: 12px;
+  }
+
+  .bubble.shout {
+    border-radius: 4px;
+    background: #fff0f0;
+    border-color: var(--accent);
+    border-width: 3px;
+  }
+
+  .bubble.system {
+    background: linear-gradient(135deg, #1a0e06, #3d1e0a);
+    color: var(--cream);
+    border-color: var(--gold);
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .speaker {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 3px;
+    display: block;
+    letter-spacing: 0.05em;
+  }
+
+  /* CAPTION (narrative box) */
+  .caption {
+    background: linear-gradient(90deg, #1a0e06, #3d1e0a);
+    color: var(--cream);
+    font-size: 12px;
+    font-family: 'Noto Serif JP', serif;
+    padding: 6px 12px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 3;
+    line-height: 1.7;
+  }
+
+  .caption.bottom {
+    top: auto;
+    bottom: 10px;
+  }
+
+  /* SOUND EFFECTS */
+  .sfx {
+    position: absolute;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.18;
+  }
+
+  /* CHARACTER ILLUSTRATIONS using CSS/SVG */
+  .char-woman {
+    width: 80px;
+    height: 110px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .char-man {
+    width: 80px;
+    height: 110px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* SCENE BACKGROUNDS */
+  .bg-night {
+    background: linear-gradient(180deg, #0a0510 0%, #1a0a2a 50%, #2a1508 100%);
+  }
+
+  .bg-day {
+    background: linear-gradient(180deg, #e8f4ff 0%, #f5f0ea 100%);
+  }
+
+  .bg-room {
+    background: linear-gradient(180deg, #f5ede0 0%, #ede0cc 100%);
+  }
+
+  .bg-phone {
+    background: linear-gradient(180deg, #e8f8ff 0%, #d0eaff 100%);
+  }
+
+  .bg-dark {
+    background: linear-gradient(180deg, #1a1008 0%, #2d1a08 100%);
+  }
+
+  /* PANEL IMAGE AREAS */
+  .panel-art {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  /* LINES / SPEED LINES */
+  .speed-lines {
+    position: absolute;
+    inset: 0;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(0,0,0,0.04) 0deg,
+      transparent 1deg,
+      transparent 4deg,
+      rgba(0,0,0,0.04) 5deg
+    );
+  }
+
+  /* PAGE DIVIDER */
+  .page-divider {
+    text-align: center;
+    margin: 40px 0 32px;
+    position: relative;
+  }
+
+  .page-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #c8b89a;
+  }
+
+  .page-num {
+    position: relative;
+    background: #f5f0ea;
+    padding: 4px 20px;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--muted);
+    border: 1px solid #c8b89a;
+  }
+
+  /* EPILOGUE / RESOLUTION */
+  .resolution-box {
+    background: linear-gradient(135deg, #1a0e06, #2d1508);
+    color: var(--cream);
+    padding: 40px 28px;
+    text-align: center;
+    margin: 32px 0;
+    border: 3px solid var(--panel-border);
+  }
+
+  .resolution-box h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+
+  .resolution-box p {
+    font-size: 14px;
+    line-height: 2;
+    color: rgba(250,246,240,0.85);
+    margin-bottom: 12px;
+  }
+
+  /* CTA */
+  .cta-area {
+    background: white;
+    border: 3px solid var(--panel-border);
+    padding: 36px 24px;
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  .cta-area p {
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 20px;
+    font-family: 'Noto Serif JP', serif;
+    color: var(--ink);
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), var(--warm));
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Noto Serif JP', serif;
+    padding: 18px 44px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(139,46,15,0.4);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(139,46,15,0.55);
+  }
+
+  /* Back link */
+  .back-link {
+    text-align: center;
+    margin: 24px 0 0;
+  }
+
+  .back-link a {
+    color: var(--muted);
+    font-size: 13px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--muted);
+  }
+
+  /* MOBILE */
+  @media (max-width: 500px) {
+    .panel-row.cols-3 { grid-template-columns: 1fr 1fr; }
+    .panel { min-height: 110px; }
+    .panel.tall { min-height: 170px; }
+    .panel.hero-panel { min-height: 200px; }
+    .bubble { font-size: 12px; padding: 7px 11px; }
+    .caption { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="tag">漫画で読む　修復ストーリー</div>
+  <h1>
+    「ぐうたら妻」が<br>
+    離婚の危機を乗り越えた<br>
+    180日間の物語
+  </h1>
+  <p>波月蛍 の実話をもとにした漫画</p>
+</div>
+
+<div class="manga-wrap">
+
+  <!-- ===== CHAPTER 1 ===== -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 1</div>
+    <div class="chapter-title">崩壊の夜</div>
+  </div>
+
+  <!-- Page 1 -->
+  <div class="panel-row cols-1">
+    <div class="panel hero-panel bg-night" style="min-height:260px;">
+      <div class="panel-art">
+        <!-- Night room illustration -->
+        <svg width="100%" height="100%" viewBox="0 0 680 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Window -->
+          <rect x="520" y="20" width="120" height="150" rx="4" fill="#0d1a3a" stroke="#3a3020" stroke-width="3"/>
+          <line x1="580" y1="20" x2="580" y2="170" stroke="#3a3020" stroke-width="2"/>
+          <line x1="520" y1="95" x2="640" y2="95" stroke="#3a3020" stroke-width="2"/>
+          <!-- Moon -->
+          <circle cx="590" cy="55" r="20" fill="#e8d87a" opacity="0.6"/>
+          <!-- Desk -->
+          <rect x="60" y="160" width="360" height="12" rx="3" fill="#5a3820"/>
+          <rect x="80" y="172" width="16" height="60" fill="#5a3820"/>
+          <rect x="340" y="172" width="16" height="60" fill="#5a3820"/>
+          <!-- Phone on desk -->
+          <rect x="200" y="130" width="60" height="30" rx="6" fill="#1a1a2a" stroke="#444" stroke-width="1.5"/>
+          <rect x="208" y="135" width="44" height="18" rx="3" fill="#2a3a5a"/>
+          <!-- Scattered papers -->
+          <rect x="100" y="140" width="70" height="16" rx="2" fill="white" opacity="0.7" transform="rotate(-5 135 148)"/>
+          <rect x="130" y="145" width="80" height="16" rx="2" fill="white" opacity="0.55" transform="rotate(3 170 153)"/>
+          <!-- Woman sitting (silhouette) -->
+          <ellipse cx="190" cy="155" rx="18" ry="18" fill="#3a2010"/>
+          <rect x="160" y="155" width="60" height="55" rx="8" fill="#3a2010"/>
+          <!-- Hair -->
+          <ellipse cx="190" cy="140" rx="20" ry="16" fill="#1a0a05"/>
+          <rect x="170" y="140" width="8" height="35" rx="4" fill="#1a0a05"/>
+          <rect x="202" y="140" width="8" height="30" rx="4" fill="#1a0a05"/>
+        </svg>
+      </div>
+      <div class="caption">深夜2時。けいは一人、スマホを握りしめたまま眠れずにいた。</div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-2">
+    <div class="panel bg-room" style="min-height:160px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Phone screen close-up -->
+          <rect x="80" y="20" width="160" height="120" rx="12" fill="#1a1a2a" stroke="#555" stroke-width="3"/>
+          <rect x="90" y="30" width="140" height="100" rx="8" fill="#0d1520"/>
+          <!-- LINE interface mock -->
+          <rect x="100" y="42" width="120" height="16" rx="8" fill="#1e3a6e" opacity="0.8"/>
+          <rect x="100" y="64" width="90" height="14" rx="7" fill="#1e3a6e" opacity="0.7"/>
+          <rect x="100" y="84" width="110" height="14" rx="7" fill="#1e3a6e" opacity="0.7"/>
+          <!-- "既読なし" indicator -->
+          <circle cx="232" cy="50" r="8" fill="#555"/>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <span class="speaker">けい（心の声）</span>
+        <div class="bubble thought">また…既読もつかない。</div>
+      </div>
+    </div>
+    <div class="panel bg-dark" style="min-height:160px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tear drops -->
+          <ellipse cx="120" cy="100" rx="8" ry="12" fill="#5a8aaa" opacity="0.5"/>
+          <ellipse cx="200" cy="80" rx="6" ry="9" fill="#5a8aaa" opacity="0.4"/>
+          <!-- Face close-up (eyes) -->
+          <ellipse cx="130" cy="78" rx="18" ry="12" fill="#2a1808"/>
+          <ellipse cx="190" cy="78" rx="18" ry="12" fill="#2a1808"/>
+          <ellipse cx="130" cy="80" rx="10" ry="8" fill="#1a0a05"/>
+          <ellipse cx="190" cy="80" rx="10" ry="8" fill="#1a0a05"/>
+          <!-- Highlights -->
+          <circle cx="126" cy="77" r="3" fill="white" opacity="0.6"/>
+          <circle cx="186" cy="77" r="3" fill="white" opacity="0.6"/>
+          <!-- Tear streams -->
+          <path d="M 122 90 Q 118 110 116 130" stroke="#7aaac4" stroke-width="2.5" fill="none" opacity="0.7"/>
+          <path d="M 192 90 Q 196 115 198 135" stroke="#7aaac4" stroke-width="2.5" fill="none" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <div class="bubble thought" style="background:#f0f0ff; border-color:#7a7ac4;">
+          7ヶ月前、「離婚したい」って言われた日から…止まらない。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel bg-room" style="min-height:120px;">
+      <div class="caption">7ヶ月前——</div>
+      <div style="height:30px;"></div>
+      <div class="bubble-wrap">
+        <span class="speaker">夫・たかし</span>
+        <div class="bubble shout" style="font-size:15px;">もう無理だ。離婚したい。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-3">
+    <div class="panel" style="min-height:120px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shocked woman -->
+          <ellipse cx="100" cy="50" rx="22" ry="22" fill="#f0c8a0"/>
+          <ellipse cx="88" cy="45" rx="5" ry="6" fill="white"/>
+          <ellipse cx="112" cy="45" rx="5" ry="6" fill="white"/>
+          <ellipse cx="88" cy="46" rx="3" ry="4" fill="#1a0a05"/>
+          <ellipse cx="112" cy="46" rx="3" ry="4" fill="#1a0a05"/>
+          <!-- Shocked mouth -->
+          <ellipse cx="100" cy="61" rx="7" ry="8" fill="#c87070"/>
+          <!-- Hair -->
+          <ellipse cx="100" cy="32" rx="24" ry="14" fill="#1a0a05"/>
+          <rect x="78" y="30" width="9" height="30" rx="4" fill="#1a0a05"/>
+          <rect x="113" y="30" width="9" height="26" rx="4" fill="#1a0a05"/>
+          <!-- Body -->
+          <rect x="78" y="70" width="44" height="40" rx="8" fill="#c87050"/>
+          <!-- Shock lines -->
+          <line x1="140" y1="20" x2="150" y2="30" stroke="#1a0a05" stroke-width="2"/>
+          <line x1="150" y1="15" x2="158" y2="28" stroke="#1a0a05" stroke-width="2"/>
+          <line x1="155" y1="10" x2="160" y2="25" stroke="#1a0a05" stroke-width="2"/>
+          <line x1="40" y1="20" x2="30" y2="30" stroke="#1a0a05" stroke-width="2"/>
+          <line x1="35" y1="15" x2="25" y2="28" stroke="#1a0a05" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+    <div class="panel" style="min-height:120px; background:#f8f0f0;">
+      <div class="bubble-wrap">
+        <span class="speaker">けい</span>
+        <div class="bubble">え…？な、なんで突然——</div>
+      </div>
+    </div>
+    <div class="panel bg-dark" style="min-height:120px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Man's back / leaving -->
+          <rect x="75" y="40" width="50" height="70" rx="6" fill="#2a3a5a"/>
+          <ellipse cx="100" cy="34" rx="20" ry="20" fill="#3a2a18"/>
+          <!-- Hair -->
+          <ellipse cx="100" cy="20" rx="22" ry="14" fill="#1a0a05"/>
+          <!-- Door frame -->
+          <rect x="0" y="0" width="20" height="120" fill="#3a2010"/>
+          <rect x="0" y="0" width="200" height="10" fill="#3a2010"/>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <span class="speaker">夫・たかし</span>
+        <div class="bubble right" style="font-size:12px;">…もう疲れた。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-divider"><span class="page-num">2</span></div>
+
+  <!-- ===== CHAPTER 2 ===== -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 2</div>
+    <div class="chapter-title">間違いだらけの3ヶ月</div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel bg-room" style="min-height:120px;">
+      <div class="caption">別居が始まって1週間後。けいは「修復」のためにできることを全部試し始めた。</div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-2">
+    <div class="panel bg-phone" style="min-height:160px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 300 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Phone with long message -->
+          <rect x="70" y="15" width="160" height="130" rx="12" fill="#1a1a2a" stroke="#555" stroke-width="2.5"/>
+          <rect x="80" y="25" width="140" height="110" rx="8" fill="#e8f4e8"/>
+          <!-- Message bubble (green = sent) -->
+          <rect x="100" y="35" width="110" height="80" rx="10" fill="#5cb85c" opacity="0.9"/>
+          <rect x="102" y="37" width="106" height="76" rx="9" fill="#5cb85c"/>
+          <!-- Text lines -->
+          <rect x="108" y="44" width="90" height="6" rx="3" fill="white" opacity="0.9"/>
+          <rect x="108" y="56" width="85" height="6" rx="3" fill="white" opacity="0.8"/>
+          <rect x="108" y="68" width="92" height="6" rx="3" fill="white" opacity="0.8"/>
+          <rect x="108" y="80" width="78" height="6" rx="3" fill="white" opacity="0.8"/>
+          <rect x="108" y="92" width="88" height="6" rx="3" fill="white" opacity="0.7"/>
+          <!-- "Sent" tick -->
+          <text x="185" y="122" font-size="10" fill="#888">既読なし</text>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <span class="speaker">けい</span>
+        <div class="bubble" style="font-size:12px;">「反省してる」って長文LINEを送った</div>
+      </div>
+    </div>
+    <div class="panel bg-dark" style="min-height:160px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 300 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Man reading phone, annoyed -->
+          <ellipse cx="150" cy="60" rx="22" ry="22" fill="#3a2a18"/>
+          <ellipse cx="138" cy="55" rx="5" ry="5" fill="#1a0a05"/>
+          <ellipse cx="162" cy="55" rx="5" ry="5" fill="#1a0a05"/>
+          <!-- Annoyed eyebrows -->
+          <path d="M 132 48 L 144 52" stroke="#1a0a05" stroke-width="2.5" fill="none"/>
+          <path d="M 156 52 L 168 48" stroke="#1a0a05" stroke-width="2.5" fill="none"/>
+          <!-- Mouth flat -->
+          <path d="M 140 70 L 160 70" stroke="#5a3828" stroke-width="2" fill="none"/>
+          <!-- Hair -->
+          <ellipse cx="150" cy="40" rx="24" ry="14" fill="#1a0a05"/>
+          <!-- Body -->
+          <rect x="120" y="80" width="60" height="65" rx="6" fill="#2a3a5a"/>
+          <!-- Phone in hand -->
+          <rect x="155" y="75" width="30" height="50" rx="6" fill="#1a1a2a" stroke="#555" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <span class="speaker">夫・たかし（心の声）</span>
+        <div class="bubble thought" style="background:#1a1a2a; color:#aaa; border-color:#555; font-size:11px;">…また同じパターンだ。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-3">
+    <div class="panel" style="min-height:130px; background:#fff8f0;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 200 130" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cooking attempt -->
+          <rect x="40" y="80" width="120" height="40" rx="4" fill="#8a6040"/>
+          <ellipse cx="100" cy="80" rx="45" ry="12" fill="#6a4a28"/>
+          <!-- Pot -->
+          <ellipse cx="100" cy="70" rx="35" ry="10" fill="#4a3020"/>
+          <rect x="65" y="40" width="70" height="35" rx="4" fill="#5a3828"/>
+          <!-- Smoke puffs -->
+          <ellipse cx="90" cy="28" rx="10" ry="8" fill="#ccc" opacity="0.6"/>
+          <ellipse cx="105" cy="22" rx="12" ry="9" fill="#ccc" opacity="0.5"/>
+          <ellipse cx="118" cy="28" rx="8" ry="7" fill="#ccc" opacity="0.5"/>
+          <!-- Fire warning -->
+          <text x="85" y="18" font-size="18" fill="#ff6600" opacity="0.6">⚠</text>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <span class="speaker">けい</span>
+        <div class="bubble" style="font-size:12px;">急に手料理を始めた</div>
+      </div>
+    </div>
+    <div class="panel bg-dark" style="min-height:130px;">
+      <div class="bubble-wrap">
+        <span class="speaker">夫・たかし</span>
+        <div class="bubble right" style="font-size:12px;">…また演技か。</div>
+      </div>
+    </div>
+    <div class="panel" style="min-height:130px; background:#fff0f5;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 200 130" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Phone call rejected -->
+          <rect x="60" y="25" width="80" height="80" rx="16" fill="#1a1a2a" stroke="#555" stroke-width="2.5"/>
+          <rect x="68" y="33" width="64" height="64" rx="12" fill="#2a2a3a"/>
+          <!-- Red X for rejected call -->
+          <circle cx="100" cy="75" r="14" fill="#c0392b"/>
+          <path d="M 92 67 L 108 83 M 108 67 L 92 83" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <span class="speaker">夫・たかし</span>
+        <div class="bubble shout" style="font-size:12px;">もう話すことはない！</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel" style="min-height:140px; background:#f8f4ff;">
+      <div class="caption">試せば試すほど、夫が遠ざかる。何かが根本的に間違っていた。</div>
+      <div style="height:35px;"></div>
+      <div class="bubble-wrap">
+        <span class="speaker">けい（心の声）</span>
+        <div class="bubble thought">なんで？やればやるほど冷めていく。私が変われば変わるほど…なんで？</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-divider"><span class="page-num">3</span></div>
+
+  <!-- ===== CHAPTER 3 ===== -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 3</div>
+    <div class="chapter-title">転機——「もうやめた」</div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel hero-panel bg-night" style="min-height:220px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 680 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Floor sitting -->
+          <ellipse cx="200" cy="150" rx="55" ry="18" fill="#2a1a08" opacity="0.4"/>
+          <!-- Woman sitting on floor (tired pose) -->
+          <rect x="170" y="100" width="60" height="60" rx="8" fill="#3a2010"/>
+          <ellipse cx="200" cy="92" rx="22" ry="22" fill="#d4a070"/>
+          <!-- Head drooped -->
+          <ellipse cx="200" cy="72" rx="24" ry="14" fill="#1a0a05"/>
+          <rect x="178" y="70" width="9" height="35" rx="4" fill="#1a0a05"/>
+          <!-- Knees up posture -->
+          <path d="M 155 155 Q 170 130 200 125 Q 230 130 245 155" fill="#3a2010"/>
+          <!-- Arms on knees -->
+          <path d="M 170 115 Q 155 130 160 155" stroke="#3a2010" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <path d="M 230 115 Q 245 130 240 155" stroke="#3a2010" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <!-- Scattered papers around -->
+          <rect x="40" y="160" width="80" height="12" rx="2" fill="white" opacity="0.4" transform="rotate(-8 80 166)"/>
+          <rect x="280" y="155" width="90" height="12" rx="2" fill="white" opacity="0.35" transform="rotate(5 325 161)"/>
+          <rect x="100" y="175" width="60" height="10" rx="2" fill="white" opacity="0.3" transform="rotate(3 130 180)"/>
+          <!-- "Broken" phone beside her -->
+          <rect x="260" y="150" width="40" height="60" rx="6" fill="#1a1a2a" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="caption">別居から3ヶ月。もうネットで調べる気力もなくなった夜。</div>
+      <div class="bubble-wrap">
+        <span class="speaker">けい（心の声）</span>
+        <div class="bubble thought">…もう、いいや。疲れた。何もしたくない。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-2">
+    <div class="panel bg-room" style="min-height:160px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Calendar on wall -->
+          <rect x="30" y="20" width="100" height="90" rx="4" fill="white" stroke="#ccc" stroke-width="2"/>
+          <rect x="30" y="20" width="100" height="22" rx="4" fill="#c94a1a"/>
+          <text x="50" y="36" font-size="11" fill="white" font-weight="bold">3月</text>
+          <!-- Days grid -->
+          <rect x="38" y="48" width="12" height="12" rx="2" fill="#eee"/>
+          <rect x="55" y="48" width="12" height="12" rx="2" fill="#eee"/>
+          <rect x="72" y="48" width="12" height="12" rx="2" fill="#eee"/>
+          <rect x="38" y="65" width="12" height="12" rx="2" fill="#eee"/>
+          <rect x="55" y="65" width="12" height="12" rx="2" fill="#c94a1a" opacity="0.4"/>
+          <rect x="72" y="65" width="12" height="12" rx="2" fill="#eee"/>
+          <rect x="89" y="65" width="12" height="12" rx="2" fill="#eee"/>
+          <!-- X marks (days crossed out) -->
+          <line x1="42" y1="52" x2="46" y2="56" stroke="#c94a1a" stroke-width="1.5"/>
+          <line x1="46" y1="52" x2="42" y2="56" stroke="#c94a1a" stroke-width="1.5"/>
+          <line x1="59" y1="52" x2="63" y2="56" stroke="#c94a1a" stroke-width="1.5"/>
+          <line x1="63" y1="52" x2="59" y2="56" stroke="#c94a1a" stroke-width="1.5"/>
+          <!-- Phone face down -->
+          <rect x="160" y="90" width="110" height="55" rx="8" fill="#1a1a2a" opacity="0.7"/>
+          <text x="185" y="123" font-size="11" fill="#666">（伏せてある）</text>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <span class="speaker">けい（心の声）</span>
+        <div class="bubble thought" style="font-size:12px;">スマホも伏せた。夫に連絡するのも、もうやめた。</div>
+      </div>
+    </div>
+    <div class="panel bg-day" style="min-height:160px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Woman eating alone, but calm -->
+          <ellipse cx="160" cy="75" rx="22" ry="22" fill="#d4a070"/>
+          <ellipse cx="148" cy="70" rx="5" ry="5" fill="#1a0a05"/>
+          <ellipse cx="172" cy="70" rx="5" ry="5" fill="#1a0a05"/>
+          <!-- Slight smile (neutral/calm) -->
+          <path d="M 152 83 Q 160 88 168 83" stroke="#9a6040" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Hair -->
+          <ellipse cx="160" cy="56" rx="24" ry="14" fill="#1a0a05"/>
+          <!-- Body -->
+          <rect x="134" y="95" width="52" height="55" rx="8" fill="#6a8fca"/>
+          <!-- Bowl of food -->
+          <ellipse cx="160" cy="138" rx="40" ry="12" fill="#8a6040"/>
+          <ellipse cx="160" cy="132" rx="38" ry="10" fill="#c8a870"/>
+        </svg>
+      </div>
+      <div class="bubble-wrap">
+        <span class="speaker">けい（心の声）</span>
+        <div class="bubble thought" style="font-size:12px;">今日は、ただご飯を食べた。それだけ。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel bg-room" style="min-height:130px;">
+      <div class="caption">それから2週間後——</div>
+      <div style="height:30px;"></div>
+      <div class="panel-art" style="position:relative; height:60px;">
+        <svg width="100%" height="60" viewBox="0 0 680 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Notification sound wave -->
+          <path d="M 260 30 Q 280 10 300 30 Q 320 50 340 30 Q 360 10 380 30 Q 400 50 420 30" stroke="#c94a1a" stroke-width="3" fill="none" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="bubble-wrap" style="text-align:center;">
+        <div class="bubble system" style="margin:0 auto; font-size:15px;">ピコン</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-2">
+    <div class="panel bg-phone" style="min-height:160px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Phone with notification -->
+          <rect x="90" y="15" width="140" height="130" rx="16" fill="#1a1a2a" stroke="#555" stroke-width="2.5"/>
+          <rect x="100" y="25" width="120" height="110" rx="12" fill="#e8f4e8"/>
+          <!-- Message from husband -->
+          <rect x="108" y="50" width="104" height="45" rx="8" fill="#5cb85c"/>
+          <rect x="111" y="53" width="98" height="39" rx="7" fill="#5cb85c"/>
+          <rect x="116" y="58" width="80" height="7" rx="3.5" fill="white" opacity="0.95"/>
+          <rect x="116" y="71" width="65" height="7" rx="3.5" fill="white" opacity="0.85"/>
+          <!-- Notification dot -->
+          <circle cx="210" cy="28" r="8" fill="#c94a1a"/>
+          <text x="207" y="32" font-size="9" fill="white" font-weight="bold">1</text>
+        </svg>
+      </div>
+    </div>
+    <div class="panel" style="min-height:160px; background:#fff8e8; border-color:#c4952a;">
+      <div class="bubble-wrap">
+        <span class="speaker">夫・たかし</span>
+        <div class="bubble right" style="border-color:#c4952a; background:#fffaf0; font-size:14px; font-weight:900;">
+          …元気にしてる？
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel hero-panel bg-night" style="min-height:200px;">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 680 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Speed lines radiating from center (shock/realization) -->
+          <defs>
+            <radialGradient id="impact" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="#c4952a" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="680" height="200" fill="url(#impact)"/>
+          <!-- Lines -->
+          <line x1="340" y1="100" x2="0" y2="0" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <line x1="340" y1="100" x2="200" y2="0" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <line x1="340" y1="100" x2="400" y2="0" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <line x1="340" y1="100" x2="680" y2="0" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <line x1="340" y1="100" x2="0" y2="100" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <line x1="340" y1="100" x2="680" y2="100" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <line x1="340" y1="100" x2="0" y2="200" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <line x1="340" y1="100" x2="340" y2="200" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <line x1="340" y1="100" x2="680" y2="200" stroke="#c4952a" stroke-width="1" opacity="0.2"/>
+          <!-- Woman's face shocked/joyful -->
+          <ellipse cx="340" cy="100" rx="28" ry="28" fill="#d4a070"/>
+          <ellipse cx="326" cy="92" rx="7" ry="8" fill="#1a0a05"/>
+          <ellipse cx="354" cy="92" rx="7" ry="8" fill="#1a0a05"/>
+          <!-- Tears of joy -->
+          <path d="M 320 100 Q 316 115 314 128" stroke="#7aaac4" stroke-width="3" fill="none"/>
+          <path d="M 358 100 Q 364 118 366 130" stroke="#7aaac4" stroke-width="3" fill="none"/>
+          <!-- Joy smile -->
+          <path d="M 326 108 Q 340 120 354 108" stroke="#9a4020" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="caption">何もしなかった2週間——それが、すべてを変えた。</div>
+    </div>
+  </div>
+
+  <div class="page-divider"><span class="page-num">4</span></div>
+
+  <!-- ===== CHAPTER 4 ===== -->
+  <div class="chapter">
+    <div class="chapter-num">CHAPTER 4</div>
+    <div class="chapter-title">180日後の食卓</div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel bg-day" style="min-height:120px;">
+      <div class="caption">そこからさらに3ヶ月——</div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel hero-panel" style="min-height:260px; background: linear-gradient(180deg, #fff8f0 0%, #ffe8c8 100%);">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 680 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Warm kitchen scene -->
+          <!-- Table -->
+          <rect x="100" y="165" width="480" height="16" rx="6" fill="#8a5a28"/>
+          <rect x="140" y="181" width="20" height="70" fill="#8a5a28"/>
+          <rect x="520" y="181" width="20" height="70" fill="#8a5a28"/>
+          <!-- Food plates -->
+          <ellipse cx="250" cy="162" rx="55" ry="14" fill="#f5e8d0" stroke="#d4b870" stroke-width="2"/>
+          <ellipse cx="250" cy="156" rx="42" ry="11" fill="#c8e870" opacity="0.6"/>
+          <ellipse cx="430" cy="162" rx="55" ry="14" fill="#f5e8d0" stroke="#d4b870" stroke-width="2"/>
+          <ellipse cx="430" cy="156" rx="42" ry="11" fill="#e87040" opacity="0.7"/>
+          <!-- Steam -->
+          <path d="M 240 140 Q 235 125 240 110" stroke="#bbb" stroke-width="2.5" fill="none" opacity="0.5"/>
+          <path d="M 255 135 Q 250 118 255 102" stroke="#bbb" stroke-width="2.5" fill="none" opacity="0.45"/>
+          <path d="M 420 140 Q 415 125 420 110" stroke="#bbb" stroke-width="2.5" fill="none" opacity="0.5"/>
+          <path d="M 435 135 Q 430 118 435 102" stroke="#bbb" stroke-width="2.5" fill="none" opacity="0.45"/>
+          <!-- Woman (right side) -->
+          <ellipse cx="520" cy="110" rx="24" ry="24" fill="#d4a070"/>
+          <ellipse cx="508" cy="104" rx="6" ry="6" fill="#1a0a05"/>
+          <ellipse cx="532" cy="104" rx="6" ry="6" fill="#1a0a05"/>
+          <path d="M 512 118 Q 520 126 528 118" stroke="#9a4020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="520" cy="88" rx="26" ry="15" fill="#1a0a05"/>
+          <rect x="496" y="132" width="52" height="60" rx="8" fill="#6a8fca"/>
+          <!-- Man (left side) -->
+          <ellipse cx="160" cy="110" rx="24" ry="24" fill="#c8905a"/>
+          <ellipse cx="148" cy="104" rx="6" ry="5" fill="#1a0a05"/>
+          <ellipse cx="172" cy="104" rx="6" ry="5" fill="#1a0a05"/>
+          <path d="M 152 118 Q 160 125 168 118" stroke="#7a3818" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="160" cy="88" rx="26" ry="13" fill="#1a0a05"/>
+          <rect x="134" y="132" width="52" height="60" rx="8" fill="#2a3a5a"/>
+          <!-- Warm light effect -->
+          <circle cx="340" cy="30" r="80" fill="#ffd870" opacity="0.15"/>
+        </svg>
+      </div>
+      <div style="height: 50px;"></div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-2">
+    <div class="panel" style="min-height:140px; background:#fff8f0;">
+      <div class="bubble-wrap">
+        <span class="speaker">夫・たかし</span>
+        <div class="bubble right">今日の夕飯、うまかったな。</div>
+      </div>
+    </div>
+    <div class="panel" style="min-height:140px; background:#f0fff0;">
+      <div class="bubble-wrap">
+        <span class="speaker">けい</span>
+        <div class="bubble" style="border-color:#5a8a5a;">…うん。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-row cols-1">
+    <div class="panel hero-panel" style="min-height:180px; background: linear-gradient(160deg, #1a0e06, #3d1e0a);">
+      <div class="panel-art">
+        <svg width="100%" height="100%" viewBox="0 0 680 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stars -->
+          <circle cx="100" cy="30" r="2" fill="#ffd870" opacity="0.7"/>
+          <circle cx="250" cy="15" r="1.5" fill="#ffd870" opacity="0.6"/>
+          <circle cx="430" cy="25" r="2.5" fill="#ffd870" opacity="0.8"/>
+          <circle cx="580" cy="10" r="1.5" fill="#ffd870" opacity="0.5"/>
+          <circle cx="620" cy="40" r="2" fill="#ffd870" opacity="0.7"/>
+          <circle cx="50" cy="60" r="1.5" fill="#ffd870" opacity="0.5"/>
+          <circle cx="340" cy="8" r="2" fill="#ffd870" opacity="0.65"/>
+          <!-- Window light -->
+          <rect x="270" y="50" width="140" height="100" rx="4" fill="#1a2a4a" opacity="0.8"/>
+          <rect x="285" y="62" width="50" height="76" fill="#ffd870" opacity="0.25"/>
+          <rect x="345" y="62" width="50" height="76" fill="#ffd870" opacity="0.25"/>
+          <line x1="340" y1="50" x2="340" y2="150" stroke="#3a3020" stroke-width="2.5"/>
+          <line x1="270" y1="100" x2="410" y2="100" stroke="#3a3020" stroke-width="2"/>
+          <!-- Silhouettes at window -->
+          <ellipse cx="303" cy="88" rx="14" ry="14" fill="#3a2010"/>
+          <rect x="289" y="100" width="28" height="40" rx="4" fill="#3a2010"/>
+          <ellipse cx="370" cy="88" rx="14" ry="14" fill="#2a3a5a"/>
+          <rect x="355" y="100" width="28" height="40" rx="4" fill="#2a3a5a"/>
+        </svg>
+      </div>
+      <div class="caption bottom">あの夜から180日。同じ食卓に、また二人で座っている。</div>
+    </div>
+  </div>
+
+  <!-- RESOLUTION -->
+  <div class="resolution-box">
+    <h2>あなたの努力は、間違っていなかった。<br>ただ——地図が必要だった。</h2>
+    <p>
+      何ヶ月も頑張り続けたのに、何も変わらなかったのは<br>
+      あなたのせいじゃない。
+    </p>
+    <p>
+      夫の心理フェーズを読まずに<br>
+      「正しそうな行動」を感情任せにやり続けていた。<br>
+      ただ、それだけだ。
+    </p>
+    <p style="color: var(--gold); font-weight:700; font-family:'Noto Serif JP',serif; font-size:16px;">
+      正しい地図があれば、<br>
+      あなたにも同じことができる。
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-area">
+    <p>
+      この漫画の主人公・けいが実際に受けた<br>
+      「夫婦仲修復チャット相談」を<br>
+      今なら月額でお試しいただけます。
+    </p>
+    <a href="index.html#申し込み" class="cta-btn">詳しく読む・今すぐ申し込む</a>
+  </div>
+
+  <div class="back-link">
+    <a href="index.html">← トップページへ戻る</a>
+  </div>
+
+</div>
+
+<!-- フッター -->
+<footer style="text-align:center; padding:28px 24px; border-top:1px solid #e0d4c8; margin-top:40px; background:#f5f0ea;">
+  <div style="margin-bottom:12px;">
+    <a href="tokusho.html" style="color:#6b5c4e; font-size:13px; text-decoration:none; border-bottom:1px solid #6b5c4e; margin:0 12px;">特定商取引法に基づく表記</a>
+    <a href="terms.html" style="color:#6b5c4e; font-size:13px; text-decoration:none; border-bottom:1px solid #6b5c4e; margin:0 12px;">利用規約</a>
+    <a href="privacy.html" style="color:#6b5c4e; font-size:13px; text-decoration:none; border-bottom:1px solid #6b5c4e; margin:0 12px;">プライバシーポリシー</a>
+  </div>
+  <p style="color:#6b5c4e; font-size:12px; margin-top:12px;">© 波月蛍 All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
