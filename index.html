@@ -6,743 +6,174 @@
 <title>ぐうたら妻のための夫婦仲修復チャット相談</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
-
   :root {
-    --ink: #2a1520;
-    --warm: #c0547a;
-    --accent: #e8729a;
-    --gold: #f4a7c0;
-    --cream: #fff5f8;
-    --muted: #9a7080;
-    --light: #fde8f0;
-    --rose: #f9d0e0;
-    --deep: #8b2d50;
+    --ink: #2a1520; --warm: #c0547a; --accent: #e8729a; --gold: #f4a7c0;
+    --cream: #fff5f8; --muted: #9a7080; --light: #fde8f0; --rose: #f9d0e0; --deep: #8b2d50;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 17px;
-    line-height: 1.9;
-    letter-spacing: 0.03em;
-  }
-
-  .hero {
-    background: linear-gradient(160deg, #4a1030 0%, #8b2d50 50%, #c0547a 100%);
-    color: var(--cream);
-    padding: 80px 24px 72px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(244,167,192,0.25) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-tag {
-    display: inline-block;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    padding: 4px 16px;
-    margin-bottom: 28px;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 300;
-  }
-
-  .hero h1 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(26px, 5vw, 46px);
-    font-weight: 900;
-    line-height: 1.5;
-    margin-bottom: 24px;
-    letter-spacing: 0.05em;
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--gold);
-    border-bottom: 2px solid var(--gold);
-  }
-
-  .hero-sub {
-    font-size: 15px;
-    color: rgba(250,246,240,0.7);
-    max-width: 540px;
-    margin: 0 auto;
-    line-height: 2;
-  }
-
-  .section {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 60px 24px;
-  }
-
+  body { background: var(--cream); color: var(--ink); font-family: 'Noto Sans JP', sans-serif; font-size: 17px; line-height: 1.9; letter-spacing: 0.03em; }
+  .hero { background: linear-gradient(160deg, #4a1030 0%, #8b2d50 50%, #c0547a 100%); color: var(--cream); padding: 80px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(244,167,192,0.25) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; letter-spacing: 0.2em; padding: 4px 16px; margin-bottom: 28px; font-weight: 300; }
+  .hero h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(26px, 5vw, 46px); font-weight: 900; line-height: 1.5; margin-bottom: 24px; letter-spacing: 0.05em; }
+  .hero h1 em { font-style: normal; color: var(--gold); border-bottom: 2px solid var(--gold); }
+  .hero-sub { font-size: 15px; color: rgba(250,246,240,0.7); max-width: 540px; margin: 0 auto; line-height: 2; }
+  .section { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
   .section + .section { padding-top: 0; }
-
-  .divider {
-    width: 40px;
-    height: 2px;
-    background: var(--accent);
-    margin: 0 auto 40px;
-  }
-
   p { margin-bottom: 20px; color: var(--ink); }
-
-  .lead {
-    font-size: 19px;
-    font-family: 'Noto Serif JP', serif;
-    font-weight: 700;
-    line-height: 2;
-    color: var(--ink);
-    margin-bottom: 28px;
-  }
-
+  .lead { font-size: 19px; font-family: 'Noto Serif JP', serif; font-weight: 700; line-height: 2; color: var(--ink); margin-bottom: 28px; }
   .strong-line { font-weight: 700; color: var(--accent); }
-
-  .bg-dark {
-    background: linear-gradient(135deg, #3a0f25, #7a2545);
-    color: var(--cream);
-  }
-
+  .bg-dark { background: linear-gradient(135deg, #3a0f25, #7a2545); color: var(--cream); }
   .bg-dark .section { max-width: 720px; }
   .bg-dark p { color: rgba(250,246,240,0.85); }
   .bg-dark .lead { color: var(--cream); }
   .bg-warm { background: var(--light); }
-
-  h2 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(20px, 3.5vw, 30px);
-    font-weight: 900;
-    line-height: 1.6;
-    margin-bottom: 32px;
-    color: var(--ink);
-  }
-
+  h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 3.5vw, 30px); font-weight: 900; line-height: 1.6; margin-bottom: 32px; color: var(--ink); }
   .bg-dark h2 { color: var(--cream); }
-
-  h3 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: var(--ink);
-  }
-
-  .emphasis-box {
-    border-left: 4px solid var(--accent);
-    padding: 20px 24px;
-    background: white;
-    margin: 32px 0;
-    font-size: 18px;
-    font-family: 'Noto Serif JP', serif;
-    font-weight: 700;
-    line-height: 1.8;
-    color: var(--ink);
-  }
-
-  .gold-box {
-    border: 2px solid var(--gold);
-    padding: 28px 32px;
-    margin: 40px 0;
-    text-align: center;
-  }
-
-  .steps { counter-reset: step; margin: 32px 0; }
-
-  .step {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 32px;
-    align-items: flex-start;
-  }
-
-  .step-num {
-    flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    background: var(--accent);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Noto Serif JP', serif;
-    font-size: 18px;
-    font-weight: 900;
-    margin-top: 4px;
-  }
-
-  .step-body h3 { font-size: 18px; margin-bottom: 8px; }
-  .step-body p { font-size: 15px; color: var(--muted); margin-bottom: 0; }
-
-  .number-highlight {
-    font-size: 42px;
-    font-family: 'Noto Serif JP', serif;
-    font-weight: 900;
-    color: var(--accent);
-    display: block;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 24px;
-    margin: 40px 0;
-  }
-
-  .stat-card {
-    background: white;
-    padding: 28px 20px;
-    text-align: center;
-    border-top: 3px solid var(--accent);
-  }
-
+  h3 { font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--ink); }
+  .emphasis-box { border-left: 4px solid var(--accent); padding: 20px 24px; background: white; margin: 32px 0; font-size: 18px; font-family: 'Noto Serif JP', serif; font-weight: 700; line-height: 1.8; color: var(--ink); }
+  .number-highlight { font-size: 42px; font-family: 'Noto Serif JP', serif; font-weight: 900; color: var(--accent); display: block; line-height: 1; margin-bottom: 4px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin: 40px 0; }
+  .stat-card { background: white; padding: 28px 20px; text-align: center; border-top: 3px solid var(--accent); }
   .stat-card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
-
   .qa-item { border-bottom: 1px solid #e0d4c8; padding: 24px 0; }
   .qa-item:last-child { border-bottom: none; }
   .qa-q { font-weight: 700; color: var(--accent); margin-bottom: 10px; font-size: 16px; }
   .qa-a { color: var(--muted); font-size: 15px; margin-bottom: 0; }
-
-  .before-after {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 40px 0;
-  }
-
+  .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0; }
   .ba-box { padding: 24px 20px; }
   .ba-before { background: #3a1020; border-left: 3px solid #9a7080; }
   .ba-after { background: #1a2a30; border-left: 3px solid var(--gold); }
-
-  .ba-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: rgba(250,246,240,0.5);
-  }
-
+  .ba-label { font-size: 11px; letter-spacing: 0.2em; font-weight: 700; margin-bottom: 12px; color: rgba(250,246,240,0.5); }
   .ba-text { color: rgba(250,246,240,0.85); font-size: 14px; line-height: 1.9; margin: 0; }
 
-  /* プランカード */
-  .plans-section {
-    background: linear-gradient(160deg, #3a0f25 0%, #8b2d50 60%, #c0547a 100%);
-    padding: 72px 24px;
-  }
+  /* プランセクション */
+  .plans-section { background: linear-gradient(160deg, #3a0f25 0%, #8b2d50 60%, #c0547a 100%); padding: 72px 24px; }
+  .plans-inner { max-width: 760px; margin: 0 auto; }
+  .plans-title { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 4vw, 34px); font-weight: 900; color: var(--cream); text-align: center; margin-bottom: 12px; line-height: 1.6; }
+  .plans-subtitle { text-align: center; color: rgba(250,246,240,0.65); font-size: 14px; margin-bottom: 48px; line-height: 2; }
+  .plan-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; margin-bottom: 40px; }
+  .plan-card { background: rgba(250,246,240,0.05); border: 1px solid rgba(196,149,42,0.3); padding: 32px 24px; text-align: center; position: relative; transition: transform 0.2s, border-color 0.2s; }
+  .plan-card:not(.featured):hover { transform: translateY(-4px); border-color: var(--gold); }
 
-  .plans-inner {
-    max-width: 760px;
-    margin: 0 auto;
-  }
+  /* 月額カード：募集停止 */
+  .plan-card.featured { border: 2px solid rgba(244,167,192,0.3); background: rgba(244,167,192,0.05); overflow: hidden; }
+  .plan-card.featured .plan-content { filter: blur(4px); opacity: 0.3; pointer-events: none; user-select: none; }
 
-  .plans-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(22px, 4vw, 34px);
-    font-weight: 900;
-    color: var(--cream);
-    text-align: center;
-    margin-bottom: 12px;
-    line-height: 1.6;
-  }
+  /* 募集停止オーバーレイ */
+  .sold-out-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; }
+  .sold-out-badge { background: rgba(30, 10, 20, 0.93); border: 2px solid var(--gold); padding: 24px 24px 20px; text-align: center; width: 86%; }
+  .sold-out-icon { font-size: 32px; display: block; margin-bottom: 10px; }
+  .sold-out-main { font-family: 'Noto Serif JP', serif; font-weight: 900; font-size: 20px; color: var(--gold); letter-spacing: 0.04em; display: block; line-height: 1.65; }
+  .sold-out-sub { font-size: 12px; color: rgba(250,246,240,0.55); display: block; margin-top: 10px; line-height: 1.9; letter-spacing: 0.04em; }
 
-  .plans-subtitle {
-    text-align: center;
-    color: rgba(250,246,240,0.65);
-    font-size: 14px;
-    margin-bottom: 48px;
-    line-height: 2;
-  }
-
-  .plan-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-
-  .plan-card {
-    background: rgba(250,246,240,0.05);
-    border: 1px solid rgba(196,149,42,0.3);
-    padding: 32px 24px;
-    text-align: center;
-    position: relative;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-
-  .plan-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--gold);
-  }
-
-  .plan-card.featured {
-    border: 2px solid var(--gold);
-    background: rgba(244,167,192,0.12);
-  }
-
-  .plan-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--gold);
-    color: var(--ink);
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 16px;
-    letter-spacing: 0.1em;
-    white-space: nowrap;
-  }
-
-  .plan-name {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
-  }
-
-  .plan-price {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(28px, 5vw, 40px);
-    font-weight: 900;
-    color: var(--cream);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .plan-price-unit {
-    font-size: 15px;
-    color: rgba(250,246,240,0.6);
-    margin-bottom: 20px;
-    font-size: 13px;
-  }
-
-  .plan-features {
-    list-style: none;
-    margin: 20px 0 28px;
-    text-align: left;
-  }
-
-  .plan-features li {
-    font-size: 13px;
-    color: rgba(250,246,240,0.75);
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(250,246,240,0.08);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .plan-features li::before {
-    content: '✓';
-    color: var(--gold);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .plan-cta {
-    display: block;
-    background: linear-gradient(135deg, var(--accent), var(--warm));
-    color: white;
-    font-size: 14px;
-    font-weight: 700;
-    font-family: 'Noto Serif JP', serif;
-    padding: 14px 20px;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 16px rgba(192,84,122,0.4);
-    text-align: center;
-  }
-
-  .plan-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(192,84,122,0.55);
-  }
-
-  .plan-cta.gold-cta {
-    background: linear-gradient(135deg, #f0a0c0, #d06090);
-    box-shadow: 0 4px 16px rgba(244,167,192,0.5);
-    color: white;
-  }
-
-  .plan-cta.gold-cta:hover {
-    box-shadow: 0 8px 24px rgba(196,149,42,0.55);
-  }
-
-  .plans-note {
-    text-align: center;
-    color: rgba(250,246,240,0.45);
-    font-size: 12px;
-    line-height: 2;
-    margin-top: 24px;
-  }
-
-  .compare-label {
-    text-align: center;
-    margin: 40px 0 16px;
-    color: rgba(250,246,240,0.5);
-    font-size: 13px;
-    letter-spacing: 0.1em;
-  }
-
-  .compare-box {
-    background: rgba(250,246,240,0.04);
-    border: 1px solid rgba(250,246,240,0.1);
-    padding: 24px 28px;
-    max-width: 480px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .compare-box p {
-    color: rgba(250,246,240,0.65);
-    font-size: 14px;
-    margin-bottom: 8px;
-    line-height: 1.9;
-  }
-
+  .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: rgba(196,149,42,0.35); color: rgba(244,167,192,0.45); font-size: 11px; font-weight: 700; padding: 4px 16px; letter-spacing: 0.1em; white-space: nowrap; }
+  .plan-name { font-family: 'Noto Serif JP', serif; font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 16px; }
+  .plan-price { font-family: 'Noto Serif JP', serif; font-size: clamp(28px, 5vw, 40px); font-weight: 900; color: var(--cream); line-height: 1; margin-bottom: 4px; }
+  .plan-price-unit { color: rgba(250,246,240,0.6); margin-bottom: 20px; font-size: 13px; }
+  .plan-features { list-style: none; margin: 20px 0 28px; text-align: left; }
+  .plan-features li { font-size: 13px; color: rgba(250,246,240,0.75); padding: 6px 0; border-bottom: 1px solid rgba(250,246,240,0.08); display: flex; align-items: center; gap: 8px; }
+  .plan-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+  .plan-cta { display: block; background: linear-gradient(135deg, var(--accent), var(--warm)); color: white; font-size: 14px; font-weight: 700; font-family: 'Noto Serif JP', serif; padding: 14px 20px; letter-spacing: 0.08em; cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(192,84,122,0.4); text-align: center; }
+  .plan-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,84,122,0.55); }
+  .plan-cta.gold-cta { background: linear-gradient(135deg, #f0a0c0, #d06090); box-shadow: 0 4px 16px rgba(244,167,192,0.5); color: white; }
+  .plans-note { text-align: center; color: rgba(250,246,240,0.45); font-size: 12px; line-height: 2; margin-top: 24px; }
+  .compare-label { text-align: center; margin: 40px 0 16px; color: rgba(250,246,240,0.5); font-size: 13px; letter-spacing: 0.1em; }
+  .compare-box { background: rgba(250,246,240,0.04); border: 1px solid rgba(250,246,240,0.1); padding: 24px 28px; max-width: 480px; margin: 0 auto; text-align: center; }
+  .compare-box p { color: rgba(250,246,240,0.65); font-size: 14px; margin-bottom: 8px; line-height: 1.9; }
   .compare-box p:last-child { margin-bottom: 0; }
-
-  .compare-box .compare-highlight {
-    color: var(--gold);
-    font-weight: 700;
-    font-size: 16px;
-    font-family: 'Noto Serif JP', serif;
-  }
-
-  .price-box {
-    background: linear-gradient(135deg, #3a0f25, #8b2d50);
-    color: var(--cream);
-    padding: 52px 32px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .price-box::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 100%, rgba(244,167,192,0.15) 0%, transparent 60%);
-  }
-
-  .cta-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent), var(--warm));
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-    font-family: 'Noto Serif JP', serif;
-    padding: 20px 52px;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 32px rgba(192,84,122,0.45);
-  }
-
-  .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(192,84,122,0.6);
-  }
-
-  .limit-badge {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--ink);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 16px;
-    letter-spacing: 0.1em;
-    margin-bottom: 24px;
-  }
-
-  blockquote {
-    border-left: 3px solid var(--gold);
-    padding: 16px 20px;
-    margin: 24px 0;
-    background: rgba(196,149,42,0.05);
-    font-style: italic;
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.9;
-  }
-
-  .select-line {
-    background: var(--light);
-    padding: 28px 32px;
-    border-top: 2px solid var(--accent);
-    border-bottom: 2px solid var(--accent);
-    margin: 40px 0;
-    font-size: 16px;
-    font-weight: 700;
-    font-family: 'Noto Serif JP', serif;
-    text-align: center;
-    line-height: 1.8;
-  }
-
-  .voice-box {
-    background: white;
-    border-left: 4px solid var(--gold);
-    padding: 24px 28px;
-    margin: 24px 0;
-    position: relative;
-  }
-
-  .voice-box::before {
-    content: '💬';
-    font-size: 20px;
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  .voice-box p {
-    font-size: 15px;
-    color: var(--muted);
-    margin-bottom: 8px;
-    line-height: 1.9;
-  }
-
-  .voice-name {
-    font-size: 13px;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 0 !important;
-  }
-
-  @media (max-width: 600px) {
-    .before-after { grid-template-columns: 1fr; }
-    .cta-btn { padding: 18px 32px; font-size: 16px; }
-    .plan-cards { grid-template-columns: 1fr; }
-  }
+  .compare-box .compare-highlight { color: var(--gold); font-weight: 700; font-size: 16px; font-family: 'Noto Serif JP', serif; }
+  .limit-badge { display: inline-block; background: var(--gold); color: var(--ink); font-size: 12px; font-weight: 700; padding: 6px 16px; letter-spacing: 0.1em; margin-bottom: 24px; }
+  .voice-box { background: white; border-left: 4px solid var(--gold); padding: 24px 28px; margin: 24px 0; position: relative; }
+  .voice-box::before { content: '💬'; font-size: 20px; display: block; margin-bottom: 8px; }
+  .voice-box p { font-size: 15px; color: var(--muted); margin-bottom: 8px; line-height: 1.9; }
+  .voice-name { font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 0 !important; }
+  @media (max-width: 600px) { .before-after { grid-template-columns: 1fr; } .plan-cards { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-tag">チャット相談サービス　期間限定公開</div>
-  <h1>
-    夫に「離婚したい」と言われた。<br>
-    でも<em>諦められなかった。</em><br>
-    そしたら、修復できた。
-  </h1>
-  <p class="hero-sub">
-    自分が嫌いで自信がなくて、修復できるわけがない、でも。諦められない。<br>そんな女性のための夫婦仲修復チャット相談
-  </p>
+  <h1>夫に「離婚したい」と言われた。<br>でも<em>諦められなかった。</em><br>そしたら、修復できた。</h1>
+  <p class="hero-sub">自分が嫌いで自信がなくて、修復できるわけがない、でも。諦められない。<br>そんな女性のための夫婦仲修復チャット相談</p>
 </div>
 
-<!-- 冒頭・S1共感 -->
 <div class="section">
-  <p class="lead">
-    今、夫から距離を置かれている。<br>
-    LINEの既読がつかない日が続いている。<br>
-    「離婚」という言葉が頭から離れない。
-  </p>
-  <p>
-    ネットで調べまくった。<br>
-    「夫の気持ちを取り戻す方法」「別居から修復したブログ」——<br>
-    全部読んだ。全部試した。<br>
-    でも何も変わらなかった。
-  </p>
-  <p>
-    それどころか、<span class="strong-line">試せば試すほど夫がさらに冷めていく気がする。</span><br>
-    なぜ？どこで間違えた？このままでは本当に終わってしまう——
-  </p>
-  <p>
-    そう感じているなら、このページを最後まで読んでほしい。<br>
-    あなたのための話をする。
-  </p>
+  <p class="lead">今、夫から距離を置かれている。<br>LINEの既読がつかない日が続いている。<br>「離婚」という言葉が頭から離れない。</p>
+  <p>ネットで調べまくった。<br>「夫の気持ちを取り戻す方法」「別居から修復したブログ」——<br>全部読んだ。全部試した。<br>でも何も変わらなかった。</p>
+  <p>それどころか、<span class="strong-line">試せば試すほど夫がさらに冷めていく気がする。</span><br>なぜ？どこで間違えた？このままでは本当に終わってしまう——</p>
+  <p>そう感じているなら、このページを最後まで読んでほしい。<br>あなたのための話をする。</p>
 </div>
 
-<!-- S2 第三者話法 -->
 <div class="bg-warm">
 <div class="section">
   <h2>こんなこと、思ったことありませんか？</h2>
-
-  <div class="voice-box">
-    <p>「こんなに頑張ってるのに、なんで伝わらないんだろう。もう何をすればいいかわからない」</p>
-    <p class="voice-name">— 別居中・30代</p>
-  </div>
-
-  <div class="voice-box">
-    <p>「夫のご機嫌を取ろうとするたびに、どんどん自分が惨めになっていく。でもやめられない」</p>
-    <p class="voice-name">— 離婚宣告から3ヶ月・40代</p>
-  </div>
-
-  <div class="voice-box">
-    <p>「正解がわからないまま、毎日夫のLINEの文章を分析して、また一喜一憂して疲弊している」</p>
-    <p class="voice-name">— 別居5ヶ月・30代</p>
-  </div>
-
-  <p style="margin-top:32px;">
-    ひとつでも「あ、私のことだ」と思ったなら、<br>
-    <span class="strong-line">あなたは間違ったやり方を、正しいと信じてやり続けている可能性が高い。</span>
-  </p>
+  <div class="voice-box"><p>「こんなに頑張ってるのに、なんで伝わらないんだろう。もう何をすればいいかわからない」</p><p class="voice-name">— 別居中・30代</p></div>
+  <div class="voice-box"><p>「夫のご機嫌を取ろうとするたびに、どんどん自分が惨めになっていく。でもやめられない」</p><p class="voice-name">— 離婚宣告から3ヶ月・40代</p></div>
+  <div class="voice-box"><p>「正解がわからないまま、毎日夫のLINEの文章を分析して、また一喜一憂して疲弊している」</p><p class="voice-name">— 別居5ヶ月・30代</p></div>
+  <p style="margin-top:32px;">ひとつでも「あ、私のことだ」と思ったなら、<br><span class="strong-line">あなたは間違ったやり方を、正しいと信じてやり続けている可能性が高い。</span></p>
 </div>
 </div>
 
-<!-- 問題提起 -->
 <div class="section">
   <h2>「もっと自分を変えなさい」<br>そのアドバイスが、修復を遠ざけている</h2>
   <p>夫婦修復を目指すとき、私たちはこう動きがち。</p>
-  <p>
-    「外見を女性らしくした」「謙虚にしよう」「これからは我慢しなきゃ」「家事も育児も完璧に」<br>
-    全部、一見正しそうに思える。<br>
-    でも実際にそれをやった人の話を聞くと、<span class="strong-line">9割は「逆効果だった」と言う。</span>
-  </p>
+  <p>「外見を女性らしくした」「謙虚にしよう」「これからは我慢しなきゃ」「家事も育児も完璧に」<br>全部、一見正しそうに思える。<br>でも実際にそれをやった人の話を聞くと、<span class="strong-line">9割は「逆効果だった」と言う。</span></p>
   <p>なぜか。</p>
-  <p>
-    冷めた夫の心理は、「ハリネズミが針を立てている状態」に近い。<br>
-    怖いから、傷つきたくないから、防衛している。<br>
-    その状態の夫に、無理に近づこうとすればするほど——<br>
-    <span class="strong-line">針はさらに鋭く立つ。</span>
-  </p>
-  <div class="emphasis-box">
-    努力すればするほど、夫が離れていく。<br>
-    これはあなたの性格の問題ではなく、<br>正しい方法と手順を知らないからだ。
-  </div>
-  <p>
-    正しい状況を把握していないから、距離感を誤って撃沈。<br>
-    言葉選びを誤り、アプローチを誤り、<br>
-    いつしか夫は遠い存在になっていく。
-  </p>
+  <p>冷めた夫の心理は、「ハリネズミが針を立てている状態」に近い。<br>怖いから、傷つきたくないから、防衛している。<br>その状態の夫に、無理に近づこうとすればするほど——<br><span class="strong-line">針はさらに鋭く立つ。</span></p>
+  <div class="emphasis-box">努力すればするほど、夫が離れていく。<br>これはあなたの性格の問題ではなく、<br>正しい方法と手順を知らないからだ。</div>
+  <p>正しい状況を把握していないから、距離感を誤って撃沈。<br>言葉選びを誤り、アプローチを誤り、<br>いつしか夫は遠い存在になっていく。</p>
 </div>
 
-<!-- S3 未来描写 -->
 <div class="bg-dark">
 <div class="section">
   <h2>ちょっとだけ、想像してみてください。</h2>
-  <p style="font-size:18px; font-family:'Noto Serif JP',serif; line-height:2.2; color:rgba(250,246,240,0.9);">
-    夫があなたに、「もう一度やり直そうか」と<br>
-    少し申し訳なさそうにほほ笑みかける姿を。
-  </p>
-  <p style="color:rgba(250,246,240,0.75); line-height:2.2;">
-    ここまでの苦しみ・悲しさ・頑張りが報われて、<br>
-    胸がいっぱいになるあなた。
-  </p>
-  <p style="color:rgba(250,246,240,0.75); line-height:2.2;">
-    あの頃のように、ふたり手を繋いで<br>
-    笑いあえる日を迎える瞬間。
-  </p>
-  <p style="color:var(--gold); font-family:'Noto Serif JP',serif; font-weight:700; font-size:17px; margin-top:32px;">
-    私はこの景色を実際に体験しました。<br>
-    そしてこの景色を見た人を、何人も見てきました。
-  </p>
-
+  <p style="font-size:18px; font-family:'Noto Serif JP',serif; line-height:2.2; color:rgba(250,246,240,0.9);">夫があなたに、「もう一度やり直そうか」と<br>少し申し訳なさそうにほほ笑みかける姿を。</p>
+  <p style="color:rgba(250,246,240,0.75); line-height:2.2;">ここまでの苦しみ・悲しさ・頑張りが報われて、<br>胸がいっぱいになるあなた。</p>
+  <p style="color:rgba(250,246,240,0.75); line-height:2.2;">あの頃のように、ふたり手を繋いで<br>笑いあえる日を迎える瞬間。</p>
+  <p style="color:var(--gold); font-family:'Noto Serif JP',serif; font-weight:700; font-size:17px; margin-top:32px;">私はこの景色を実際に体験しました。<br>そしてこの景色を見た人を、何人も見てきました。</p>
   <div class="before-after" style="margin-top:48px;">
-    <div class="ba-box ba-before">
-      <div class="ba-label">今のまま続けた場合</div>
-      <p class="ba-text">
-        夫からのLINEを待ちながら、毎晩スマホを握りしめる。<br><br>
-        ネット検索を繰り返すが、どれが正しいかわからない。<br><br>
-        試しては後悔して、また試して、また後悔する。<br><br>
-        6ヶ月後、離婚届が届く。
-      </p>
-    </div>
-    <div class="ba-box ba-after">
-      <div class="ba-label">正しい地図を持った場合</div>
-      <p class="ba-text">
-        「今日やること」が明確で、それだけに集中できる。<br><br>
-        夫の反応が理解できなかったのに、「今の状態」が分かる。<br><br>
-        3ヶ月目、夫から久しぶりにLINEが来る。<br><br>
-        6ヶ月後、同じ食卓で夕飯を食べている。
-      </p>
-    </div>
+    <div class="ba-box ba-before"><div class="ba-label">今のまま続けた場合</div><p class="ba-text">夫からのLINEを待ちながら、毎晩スマホを握りしめる。<br><br>ネット検索を繰り返すが、どれが正しいかわからない。<br><br>試しては後悔して、また試して、また後悔する。<br><br>6ヶ月後、離婚届が届く。</p></div>
+    <div class="ba-box ba-after"><div class="ba-label">正しい地図を持った場合</div><p class="ba-text">「今日やること」が明確で、それだけに集中できる。<br><br>夫の反応が理解できなかったのに、「今の状態」が分かる。<br><br>3ヶ月目、夫から久しぶりにLINEが来る。<br><br>6ヶ月後、同じ食卓で夕飯を食べている。</p></div>
   </div>
 </div>
 </div>
 
-<!-- 転換・原理原則 -->
 <div class="bg-warm">
 <div class="section">
   <h2>修復の原理は、ひとつだけ。<br>「夫の心理フェーズを正確に読む」</h2>
   <p>別居・離婚宣告直後の夫の心は、3つのフェーズを経る。</p>
-  <p>
-    <strong style="color:var(--accent)">敵フェーズ：</strong>妻を「問題の原因」と認識している。何をしても逆効果になりやすい。<br>
-    <strong style="color:var(--accent)">フラットフェーズ：</strong>感情が落ち着き始め、記憶が客観化される。動ける時期。<br>
-    <strong style="color:var(--accent)">信頼フェーズ：</strong>妻に対する安心感が戻り始める。関係再構築の本番。
-  </p>
+  <p><strong style="color:var(--accent)">敵フェーズ：</strong>妻を「問題の原因」と認識している。何をしても逆効果になりやすい。<br><strong style="color:var(--accent)">フラットフェーズ：</strong>感情が落ち着き始め、記憶が客観化される。動ける時期。<br><strong style="color:var(--accent)">信頼フェーズ：</strong>妻に対する安心感が戻り始める。関係再構築の本番。</p>
   <p>修復に成功する人は、<br>フェーズに合った行動を、適切なタイミングでとっている。</p>
   <p>修復に失敗する人は、<br>フェーズを無視して「正しそうな行動」を感情任せに続けている。</p>
-  <div class="emphasis-box">
-    「今あなたの夫がどのフェーズにいるか」を判定し、<br>
-    そのフェーズに合った言動だけを選んでいく。<br>
-    それが唯一の、再現性ある修復の道だ。
-  </div>
+  <div class="emphasis-box">「今あなたの夫がどのフェーズにいるか」を判定し、<br>そのフェーズに合った言動だけを選んでいく。<br>それが唯一の、再現性ある修復の道だ。</div>
 </div>
 </div>
 
-<!-- 具体策 -->
 <div class="section">
   <h2>このチャット相談で行うこと。</h2>
   <div style="margin:32px 0;">
-    <div style="margin-bottom:28px; padding:24px; background:white; border-left:4px solid var(--accent);">
-      <h3>現状把握：夫の心理フェーズを特定する</h3>
-      <p style="font-size:15px; color:var(--muted); margin-bottom:0;">最初のチャットで「夫の最近の言動・連絡の様子・別居からの期間」を聞く。それだけで、今夫がどのフェーズにいるかを特定できる。感情論ではなく、行動パターンのデータで判定する。</p>
-    </div>
-    <div style="margin-bottom:28px; padding:24px; background:white; border-left:4px solid var(--accent);">
-      <h3>フェーズ別アクション：今できることを伝える</h3>
-      <p style="font-size:15px; color:var(--muted); margin-bottom:0;">「今この状況で動けること」だけを選ぶ。先の計画より、今日の行動に絞る。状況に合わせて都度、最適なアドバイスをお伝えする。</p>
-    </div>
-    <div style="padding:24px; background:white; border-left:4px solid var(--accent);">
-      <h3>LINEの文章・実際の言葉を一緒に考える</h3>
-      <p style="font-size:15px; color:var(--muted); margin-bottom:0;">「なんて送ればいいか」で止まってしまう人のために、送ろうとしている文面・言葉を一緒に確認する。あなたの言葉をベースに「これで大丈夫か」「ここを変えた方がいいか」を一緒に精査する。</p>
-    </div>
+    <div style="margin-bottom:28px; padding:24px; background:white; border-left:4px solid var(--accent);"><h3>現状把握：夫の心理フェーズを特定する</h3><p style="font-size:15px; color:var(--muted); margin-bottom:0;">最初のチャットで「夫の最近の言動・連絡の様子・別居からの期間」を聞く。それだけで、今夫がどのフェーズにいるかを特定できる。感情論ではなく、行動パターンのデータで判定する。</p></div>
+    <div style="margin-bottom:28px; padding:24px; background:white; border-left:4px solid var(--accent);"><h3>フェーズ別アクション：今できることを伝える</h3><p style="font-size:15px; color:var(--muted); margin-bottom:0;">「今この状況で動けること」だけを選ぶ。先の計画より、今日の行動に絞る。状況に合わせて都度、最適なアドバイスをお伝えする。</p></div>
+    <div style="padding:24px; background:white; border-left:4px solid var(--accent);"><h3>LINEの文章・実際の言葉を一緒に考える</h3><p style="font-size:15px; color:var(--muted); margin-bottom:0;">「なんて送ればいいか」で止まってしまう人のために、送ろうとしている文面・言葉を一緒に確認する。あなたの言葉をベースに「これで大丈夫か」「ここを変えた方がいいか」を一緒に精査する。</p></div>
   </div>
 </div>
 
-<!-- 証明 -->
 <div class="bg-warm">
 <div class="section">
   <h2>私自身の話をする。</h2>
   <div class="stats-grid" style="grid-template-columns: 1fr 1fr; max-width: 480px;">
-    <div class="stat-card">
-      <span class="number-highlight">5ヶ月</span>
-      <p>私自身が別居から再同居にかかった期間</p>
-    </div>
-    <div class="stat-card">
-      <span class="number-highlight">6ヶ月</span>
-      <p>私自身が別居から完全修復にかかった期間</p>
-    </div>
+    <div class="stat-card"><span class="number-highlight">5ヶ月</span><p>私自身が別居から再同居にかかった期間</p></div>
+    <div class="stat-card"><span class="number-highlight">6ヶ月</span><p>私自身が別居から完全修復にかかった期間</p></div>
   </div>
-  <p>
-    私自身も、2023年11月に夫から離婚宣告を受けた。<br>
-    2024年3月から別居が始まり、毎日泣きながらネットで調べ続けた。
-  </p>
-  <p>
-    最初の3ヶ月は、全部間違えた。<br>
-    「反省を伝えよう」と長文LINEを送って既読無視された。<br>
-    「変わった姿を見せよう」と急に料理を始めて「また演技か」と言われた。<br>
-    「謝罪しよう」と電話したら「もう話すことはない」と切られた。
-  </p>
+  <p>私自身も、2023年11月に夫から離婚宣告を受けた。<br>2024年3月から別居が始まり、毎日泣きながらネットで調べ続けた。</p>
+  <p>最初の3ヶ月は、全部間違えた。<br>「反省を伝えよう」と長文LINEを送って既読無視された。<br>「変わった姿を見せよう」と急に料理を始めて「また演技か」と言われた。<br>「謝罪しよう」と電話したら「もう話すことはない」と切られた。</p>
   <p>それでも別居から6ヶ月後、完全修復した。</p>
-  <p>
-    転機は、努力することをやめた瞬間だった。<br>
-    「もういいや」と諦めたとき、はじめて夫との距離が正しくなった。<br>
-    結果的に、それが夫の心理フェーズに沿った対応になっていた。
-  </p>
+  <p>転機は、努力することをやめた瞬間だった。<br>「もういいや」と諦めたとき、はじめて夫との距離が正しくなった。<br>結果的に、それが夫の心理フェーズに沿った対応になっていた。</p>
 </div>
 </div>
 
-<!-- 読者選別 -->
 <div class="section">
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:40px 0;">
     <div style="background:white; border-top:3px solid var(--accent); padding:28px 24px;">
@@ -767,47 +198,27 @@
   </div>
 </div>
 
-<!-- S4 プランカード・クロージング -->
+<!-- プランカード -->
 <div class="plans-section">
   <div class="plans-inner">
-
-    <!-- 重要注意書き -->
     <div style="background:rgba(255,255,255,0.08); border:2px solid rgba(244,167,192,0.5); padding:32px 28px; margin-bottom:48px; text-align:center;">
       <p style="color:var(--gold); font-size:13px; letter-spacing:0.2em; font-weight:700; margin-bottom:16px;">⚠️ 申し込み前に必ずお読みください</p>
-      <p style="color:rgba(250,246,240,0.9); font-size:15px; line-height:2; margin-bottom:16px; font-family:'Noto Serif JP',serif; font-weight:700;">
-        本サービスへのお申し込みは、<br>
-        <span style="color:var(--gold);">無料1ターン体験後のみ</span>受け付けています。
-      </p>
-      <p style="color:rgba(250,246,240,0.7); font-size:13px; line-height:2; margin-bottom:0;">
-        まずはLINE公式アカウントより無料相談をお申し込みください。<br>
-        1ターンのやりとりを経てから、有料プランへご案内しています。<br>
-        体験なしでの直接申し込みはお受けできません。
-      </p>
+      <p style="color:rgba(250,246,240,0.9); font-size:15px; line-height:2; margin-bottom:16px; font-family:'Noto Serif JP',serif; font-weight:700;">本サービスへのお申し込みは、<br><span style="color:var(--gold);">無料1ターン体験後のみ</span>受け付けています。</p>
+      <p style="color:rgba(250,246,240,0.7); font-size:13px; line-height:2; margin-bottom:0;">まずはLINE公式アカウントより無料相談をお申し込みください。<br>1ターンのやりとりを経てから、有料プランへご案内しています。<br>体験なしでの直接申し込みはお受けできません。</p>
     </div>
 
     <div class="limit-badge" style="display:block; text-align:center; margin-bottom:20px;">今月の新規受付　月額1名・ターン制3名</div>
-
-    <h2 class="plans-title">
-      どっちのタイプですか？
-    </h2>
-    <p class="plans-subtitle">
-      「まず試してみたい」か、「じっくり一緒に取り組みたい」か。<br>
-      あなたに合うプランを選んでください。
-    </p>
+    <h2 class="plans-title">どっちのタイプですか？</h2>
+    <p class="plans-subtitle">「まず試してみたい」か、「じっくり一緒に取り組みたい」か。<br>あなたに合うプランを選んでください。</p>
 
     <div class="plan-cards">
-
       <!-- 3日間 -->
       <div class="plan-card">
         <div class="plan-name">🌙 3日間プラン</div>
         <div class="plan-price">¥9,800</div>
         <div class="plan-price-unit">3日間・5ターンまで</div>
         <ul class="plan-features">
-          <li>LINEチャット形式</li>
-          <li>通話・Zoom不要</li>
-          <li>5ターンまで相談可</li>
-          <li>何度でも購入OK</li>
-          <li>基本24時間以内返信</li>
+          <li>LINEチャット形式</li><li>通話・Zoom不要</li><li>5ターンまで相談可</li><li>何度でも購入OK</li><li>基本24時間以内返信</li>
         </ul>
         <a href="https://buy.stripe.com/00w9ASaBA2im1Xm9XBfEk03" target="_blank" class="plan-cta">まず試してみる →</a>
       </div>
@@ -818,32 +229,35 @@
         <div class="plan-price">¥19,800</div>
         <div class="plan-price-unit">7日間・12ターンまで</div>
         <ul class="plan-features">
-          <li>LINEチャット形式</li>
-          <li>通話・Zoom不要</li>
-          <li>12ターンまで相談可</li>
-          <li>何度でも購入OK</li>
-          <li>基本24時間以内返信</li>
+          <li>LINEチャット形式</li><li>通話・Zoom不要</li><li>12ターンまで相談可</li><li>何度でも購入OK</li><li>基本24時間以内返信</li>
         </ul>
         <a href="https://buy.stripe.com/8x2bJ0eRQ8GK6dC2v9fEk04" target="_blank" class="plan-cta">7日間で整理する →</a>
       </div>
 
-      <!-- 月額 -->
+      <!-- 月額（募集停止中） -->
       <div class="plan-card featured">
         <div class="plan-badge">おすすめ</div>
-        <div class="plan-name">🌸 月額プラン</div>
-        <div class="plan-price">¥39,800</div>
-        <div class="plan-price-unit">1ヶ月間・無制限</div>
-        <ul class="plan-features">
-          <li>LINEチャット形式</li>
-          <li>通話・Zoom不要</li>
-          <li>ターン数制限なし</li>
-          <li>愚痴・感情の吐き出しもOK</li>
-          <li>友人のように気軽に使える</li>
-          <li>基本24時間以内返信</li>
-        </ul>
-        <a href="https://buy.stripe.com/3cIcN4aBA1ei31q5HlfEk00" target="_blank" class="plan-cta gold-cta">じっくり一緒に取り組む →</a>
-      </div>
 
+        <!-- ぼかされるコンテンツ -->
+        <div class="plan-content">
+          <div class="plan-name">🌸 月額プラン</div>
+          <div class="plan-price">¥39,800</div>
+          <div class="plan-price-unit">1ヶ月間・無制限</div>
+          <ul class="plan-features">
+            <li>LINEチャット形式</li><li>通話・Zoom不要</li><li>ターン数制限なし</li><li>愚痴・感情の吐き出しもOK</li><li>友人のように気軽に使える</li><li>基本24時間以内返信</li>
+          </ul>
+          <a href="#" class="plan-cta gold-cta">じっくり一緒に取り組む →</a>
+        </div>
+
+        <!-- 募集停止オーバーレイ -->
+        <div class="sold-out-overlay">
+          <div class="sold-out-badge">
+            <span class="sold-out-icon">🙇</span>
+            <span class="sold-out-main">現在満員により<br>募集停止中</span>
+            <span class="sold-out-sub">次回の空き枠をお待ちください<br>LINE公式アカウントでお知らせします</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="compare-label">— 一般的な相場と比べると —</div>
@@ -852,46 +266,26 @@
       <p style="margin-top:12px;" class="compare-highlight">月額プランなら1日たったの約1,327円</p>
       <p style="margin-top:8px; font-size:12px;">通話もZoomも不要。<br>ランチ1食分で、正しい地図が手に入る。</p>
     </div>
-
     <p class="plans-note">
       ※ お申し込み後、24時間以内にご返信します<br>
       ※ 受付枠は予告なく終了することがございます<br>
       ※ 月額プランは初月解約可・途中解約違約金なし
     </p>
-
   </div>
 </div>
 
-<!-- 反論処理 S5 -->
 <div class="section">
   <h2>「怪しい」と思ったあなたへ。<br>よくある疑問に正直に答える。</h2>
-  <div class="qa-item">
-    <p class="qa-q">Q. チャットで本当に伝わるの？対面の方がいいのでは？</p>
-    <p class="qa-a">チャット形式だからこそ、感情が動いたその瞬間に相談できる。気持ちが落ち着いているときより、何かあって「どうすれば？」となったリアルタイムにアドバイスが届く方が行動につながりやすい。</p>
-  </div>
-  <div class="qa-item">
-    <p class="qa-q">Q. 自分は続けられないかもしれない</p>
-    <p class="qa-a">それぞれに合わせたアドバイスで、着実に修復を目指します。弱音を吐くのも立派なステップアップ。まずは3日間プランで試してみてほしい。</p>
-  </div>
-  <div class="qa-item">
-    <p class="qa-q">Q. ターン制と月額、どっちが合っている？</p>
-    <p class="qa-a">「この件だけ集中して聞きたい」という方はターン制プランが向いている。「感情が揺れるたびに話したい」「愚痴も含めて吐き出せる場所がほしい」という方は月額プランが向いている。月額プランはターン数を気にせず、友人に話すような感覚で使ってもらえる。</p>
-  </div>
-  <div class="qa-item">
-    <p class="qa-q">Q. 必ず修復できる？</p>
-    <p class="qa-a">相手がいることなので100％修復を約束することはできない。ただ、何もやらずに後悔するか、行動した先に何が得られるのかには雲泥の差がある。</p>
-  </div>
+  <div class="qa-item"><p class="qa-q">Q. チャットで本当に伝わるの？対面の方がいいのでは？</p><p class="qa-a">チャット形式だからこそ、感情が動いたその瞬間に相談できる。気持ちが落ち着いているときより、何かあって「どうすれば？」となったリアルタイムにアドバイスが届く方が行動につながりやすい。</p></div>
+  <div class="qa-item"><p class="qa-q">Q. 自分は続けられないかもしれない</p><p class="qa-a">それぞれに合わせたアドバイスで、着実に修復を目指します。弱音を吐くのも立派なステップアップ。まずは3日間プランで試してみてほしい。</p></div>
+  <div class="qa-item"><p class="qa-q">Q. ターン制と月額、どっちが合っている？</p><p class="qa-a">「この件だけ集中して聞きたい」という方はターン制プランが向いている。「感情が揺れるたびに話したい」「愚痴も含めて吐き出せる場所がほしい」という方は月額プランが向いている。月額プランはターン数を気にせず、友人に話すような感覚で使ってもらえる。</p></div>
+  <div class="qa-item"><p class="qa-q">Q. 必ず修復できる？</p><p class="qa-a">相手がいることなので100％修復を約束することはできない。ただ、何もやらずに後悔するか、行動した先に何が得られるのかには雲泥の差がある。</p></div>
 </div>
 
 <div class="section" style="text-align:center; padding-top:48px;">
-  <p style="color:var(--muted); font-size:14px; line-height:2;">
-    6ヶ月後、「あのとき申し込んでよかった」と思うか、<br>
-    「あのとき申し込んでいれば」と思うか。<br><br>
-    決めるのは、今だ。
-  </p>
+  <p style="color:var(--muted); font-size:14px; line-height:2;">6ヶ月後、「あのとき申し込んでよかった」と思うか、<br>「あのとき申し込んでいれば」と思うか。<br><br>決めるのは、今だ。</p>
 </div>
 
-<!-- フッター -->
 <footer style="text-align:center; padding:32px 24px; border-top:1px solid #e0d4c8; margin-top:40px;">
   <div style="margin-bottom:12px;">
     <a href="tokusho.html" style="color:#8a6070; font-size:13px; text-decoration:none; border-bottom:1px solid #8a6070; margin:0 12px;">特定商取引法に基づく表記</a>
