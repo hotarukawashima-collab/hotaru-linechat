@@ -531,40 +531,19 @@
   }
   .plan-card:hover { background: rgba(253,246,238,0.08); }
 
-  .plan-card.featured {
-    border-top: 2px solid rgba(232,114,154,0.25);
-    overflow: hidden;
-  }
-  .plan-card.featured .plan-content {
-    filter: blur(4px); opacity: 0.2;
-    pointer-events: none; user-select: none;
-  }
-
-  .sold-out-overlay {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center; z-index: 10;
-  }
-  .sold-out-inner {
-    border: 1px solid rgba(201,168,76,0.35);
-    padding: 28px 20px; text-align: center; width: 84%;
-    background: rgba(60,8,8,0.96);
-  }
-  .sold-out-icon { font-size: 24px; display: block; margin-bottom: 10px; }
-  .sold-out-main {
-    font-family: 'Shippori Mincho', serif;
-    font-size: 17px; font-weight: 800;
-    color: var(--gold-l); display: block; line-height: 1.7; margin-bottom: 10px;
-  }
-  .sold-out-sub { font-size: 11px; color: rgba(253,246,238,0.4); line-height: 2; letter-spacing: 0.06em; }
-
+  /* おすすめバッジ */
   .plan-badge {
     position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
     font-size: 10px; letter-spacing: 0.12em; font-weight: 500;
     padding: 4px 16px;
     background: #3a0808;
-    color: rgba(232,114,154,0.55);
-    border: 1px solid rgba(232,114,154,0.2);
+    color: var(--gold-l);
+    border: 1px solid rgba(201,168,76,0.45);
     white-space: nowrap;
+  }
+  .plan-card.recommended {
+    background: rgba(201,168,76,0.07);
+    border-top: 2px solid var(--gold);
   }
 
   .plan-icon { font-size: 20px; display: block; margin-bottom: 14px; }
@@ -606,8 +585,6 @@
     transition: all 0.3s; text-align: center;
   }
   .plan-cta:hover { background: var(--gold); color: #3a0808; border-color: var(--gold); }
-  .plan-cta.rose-cta { border-color: rgba(232,114,154,0.35); color: rgba(232,114,154,0.6); }
-  .plan-cta.rose-cta:hover { background: var(--rose); color: white; border-color: var(--rose); }
 
   /* プランカード直前の再確認バー */
   .precheck-bar {
@@ -952,7 +929,7 @@
       </ul>
     </div>
 
-    <div class="limit-badge"><span>今月の新規受付　月額1名・ターン制3名</span></div>
+    <div class="limit-badge"><span>今月の新規受付　残り3名</span></div>
 
     <div class="gold-diamond-line" style="margin-bottom:24px;">
       <div class="gdl-line"></div><div class="gdl-diamond sm"></div><div class="gdl-diamond"></div><div class="gdl-diamond sm"></div><div class="gdl-line r"></div>
@@ -960,8 +937,8 @@
 
     <div class="plan-section-title">
       <div class="eyebrow">SELECT YOUR PLAN</div>
-      <h2>どっちのタイプですか？</h2>
-      <p>「まず試してみたい」か、「じっくり一緒に取り組みたい」か。</p>
+      <h2>どこまで一緒に走りますか？</h2>
+      <p>「今日の一手だけ知りたい」から「腰を据えて立て直したい」まで、3段階。</p>
     </div>
 
     <div class="precheck-bar">
@@ -971,6 +948,18 @@
 
     <div class="plan-cards">
       <div class="plan-card">
+        <span class="plan-icon">🕯</span>
+        <div class="plan-name">1日間プラン</div>
+        <div class="plan-price">¥5,000</div>
+        <div class="plan-price-unit">1日間・1ターンのみ</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>LINEチャット形式</li><li>通話・Zoom不要</li><li>1ターン限定</li><li>何度でも購入OK</li><li>基本24時間以内返信</li>
+        </ul>
+        <a href="https://buy.stripe.com/cNi5kC398e149pO8TxfEk05" target="_blank" class="plan-cta">今日の一手を決める</a>
+      </div>
+      <div class="plan-card recommended">
+        <div class="plan-badge">おすすめ</div>
         <span class="plan-icon">💋</span>
         <div class="plan-name">3日間プラン</div>
         <div class="plan-price">¥9,800</div>
@@ -979,7 +968,7 @@
         <ul class="plan-features">
           <li>LINEチャット形式</li><li>通話・Zoom不要</li><li>3ターンまで相談可</li><li>何度でも購入OK</li><li>基本24時間以内返信</li>
         </ul>
-        <a href="https://buy.stripe.com/00w9ASaBA2im1Xm9XBfEk03" target="_blank" class="plan-cta">まず試してみる</a>
+        <a href="https://buy.stripe.com/00w9ASaBA2im1Xm9XBfEk03" target="_blank" class="plan-cta">3日間で立て直す</a>
       </div>
       <div class="plan-card">
         <span class="plan-icon">🌹</span>
@@ -992,27 +981,6 @@
         </ul>
         <a href="https://buy.stripe.com/8x2bJ0eRQ8GK6dC2v9fEk04" target="_blank" class="plan-cta">7日間で整理する</a>
       </div>
-      <div class="plan-card featured">
-        <div class="plan-badge">おすすめ</div>
-        <div class="plan-content">
-          <span class="plan-icon">🌸</span>
-          <div class="plan-name">月額プラン</div>
-          <div class="plan-price">¥39,800</div>
-          <div class="plan-price-unit">1ヶ月間・無制限</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-features">
-            <li>LINEチャット形式</li><li>通話・Zoom不要</li><li>ターン数制限なし</li><li>愚痴・感情の吐き出しもOK</li><li>友人のように気軽に使える</li><li>基本24時間以内返信</li>
-          </ul>
-          <a href="#" class="plan-cta rose-cta">じっくり一緒に取り組む</a>
-        </div>
-        <div class="sold-out-overlay">
-          <div class="sold-out-inner">
-            <span class="sold-out-icon">🙇</span>
-            <span class="sold-out-main">現在満員により<br>募集停止中</span>
-            <span class="sold-out-sub">次回の空き枠をお待ちください<br>LINE公式アカウントでお知らせします</span>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="gold-diamond-line" style="margin-bottom: 32px;">
@@ -1023,8 +991,8 @@
       <div class="compare-eyebrow">— 一般的な相場と比べると —</div>
       <div class="compare-box">
         <p>夫婦仲修復サポートの相場<br>Zoom6回・3ヶ月で <strong style="color:rgba(253,246,238,0.85)">約30万円</strong></p>
-        <span class="compare-highlight">月額プランなら1日たったの約1,327円</span>
-        <p style="font-size:12px; margin:0;">通話もZoomも不要。ランチ1食分で、正しい地図が手に入る。</p>
+        <span class="compare-highlight">1日間プランなら、¥5,000</span>
+        <p style="font-size:12px; margin:0;">通話もZoomも不要。ランチ1食分で、今日踏み出す方向が決まる。</p>
       </div>
     </div>
     <p class="plans-note">
@@ -1033,7 +1001,8 @@
       ※ 満枠時・条件を満たさないご決済は全額ご返金いたします<br>
       ※ お申し込み後、24時間以内にご返信します<br>
       ※ 受付枠は予告なく終了することがございます<br>
-      ※ 月額プランは初月解約可・途中解約違約金なし
+      ※ 1ターン＝ご相談1往復（あなたのご相談→私の返信）です<br>
+      ※ 期間内に使い切れなかったターンの繰り越し・返金はできません
     </p>
   </div>
 </div>
@@ -1048,7 +1017,7 @@
   <div class="qa-item"><p class="qa-q">空き枠はどこで確認できる？</p><p class="qa-a">LINE公式アカウントで最新の受付状況をお知らせしている。決済前にひとことメッセージをもらえれば、その場でお返事する。満枠のまま決済されてしまうと返金手続きの手間がお互いに発生するので、必ず先に確認してほしい。</p></div>
   <div class="qa-item"><p class="qa-q">チャットで本当に伝わるの？対面の方がいいのでは？</p><p class="qa-a">チャット形式だからこそ、感情が動いたその瞬間に相談できる。気持ちが落ち着いているときより、何かあって「どうすれば？」となったリアルタイムにアドバイスが届く方が行動につながりやすい。</p></div>
   <div class="qa-item"><p class="qa-q">自分は続けられないかもしれない</p><p class="qa-a">それぞれに合わせたアドバイスで、着実に修復を目指します。弱音を吐くのも立派なステップアップ。まずは3日間プランで試してみてほしい。</p></div>
-  <div class="qa-item"><p class="qa-q">ターン制と月額、どっちが合っている？</p><p class="qa-a">「この件だけ集中して聞きたい」という方はターン制が向いている。「感情が揺れるたびに話したい」「愚痴も吐き出せる場所がほしい」という方は月額が向いている。</p></div>
+  <div class="qa-item"><p class="qa-q">3つのプラン、どれを選べばいい？</p><p class="qa-a">違いはやりとりできる回数だけ。「今この状況をどう見るか、それだけ聞きたい」なら1日間プラン。「聞いて、動いて、その結果をもう一度見てほしい」なら3日間プラン。「動く→反応が返る→修正する」を何度か重ねたいなら7日間プラン。どれも何度でも購入できるので、迷ったら1日間から試してほしい。</p></div>
   <div class="qa-item"><p class="qa-q">必ず修復できる？</p><p class="qa-a">相手がいることなので100％修復を約束することはできない。ただ、何もやらずに後悔するか、行動した先に何が得られるのかには雲泥の差がある。</p></div>
 </div>
 
