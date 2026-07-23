@@ -466,6 +466,47 @@
   .caution-main em { font-style: normal; color: var(--gold-l); }
   .caution-sub { font-size: 12px; color: rgba(253,246,238,0.45); line-height: 2.1; margin: 0; }
 
+  /* 申込条件リスト */
+  .caution-list {
+    list-style: none;
+    text-align: left;
+    max-width: 480px;
+    margin: 22px auto 0;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 20px;
+  }
+  .caution-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(253,246,238,0.06);
+  }
+  .caution-list li:last-child { border-bottom: none; }
+  .caution-list li::before {
+    content: '◆';
+    color: var(--gold-d);
+    font-size: 8px;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .caution-item-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold-l);
+    display: block;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .caution-item-desc {
+    font-size: 12px;
+    color: rgba(253,246,238,0.5);
+    line-height: 2;
+    letter-spacing: 0.04em;
+    display: block;
+  }
+
   .limit-badge {
     text-align: center; margin-bottom: 40px;
   }
@@ -568,6 +609,27 @@
   .plan-cta.rose-cta { border-color: rgba(232,114,154,0.35); color: rgba(232,114,154,0.6); }
   .plan-cta.rose-cta:hover { background: var(--rose); color: white; border-color: var(--rose); }
 
+  /* プランカード直前の再確認バー */
+  .precheck-bar {
+    border: 1px solid rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.06);
+    padding: 16px 20px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .precheck-bar p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 2;
+    color: rgba(253,246,238,0.65);
+    letter-spacing: 0.05em;
+  }
+  .precheck-bar em {
+    font-style: normal;
+    color: var(--gold-l);
+    font-weight: 600;
+  }
+
   /* 比較 */
   .compare-wrap { margin-top: 48px; text-align: center; }
   .compare-eyebrow { font-size: 11px; letter-spacing: 0.25em; color: rgba(253,246,238,0.28); margin-bottom: 18px; }
@@ -640,7 +702,7 @@
   <div class="hero-bottom-line"></div>
 
   <span class="crown">👠</span>
-  <div class="hero-tag">チャット相談サービス　期間限定公開</div>
+  <div class="hero-tag">note購入者限定　チャット相談サービス</div>
 
   <div class="gold-diamond-line">
     <div class="gdl-line"></div>
@@ -865,8 +927,29 @@
     <div class="caution-box">
       <span class="caution-crown">👠</span>
       <div class="caution-title">⚠ 申し込み前に必ずお読みください</div>
-      <p class="caution-main">本サービスへのお申し込みは、<br><em>無料1ターン体験後のみ</em>受け付けています。</p>
-      <p class="caution-sub">まずはLINE公式アカウントより無料相談をお申し込みください。<br>1ターンのやりとりを経てから、有料プランへご案内しています。</p>
+      <p class="caution-main">本サービスへのお申し込みには、<br><em>3つの条件</em>がございます。</p>
+      <p class="caution-sub">どれかひとつでも満たしていない場合、<br>お申し込みをお受けできません。</p>
+
+      <ul class="caution-list">
+        <li>
+          <div>
+            <span class="caution-item-title">note購入者限定のサービスです</span>
+            <span class="caution-item-desc">チャット相談は、私のnoteをご購入いただいた方のみお申し込みいただけます。noteの内容を前提にアドバイスを組み立てるため、未購入の状態では十分なサポートができません。</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="caution-item-title">人数制限があります。ご予約前に空き枠のご確認を</span>
+            <span class="caution-item-desc">おひとりずつ丁寧に向き合うため、受付人数を限定しています。決済前に、必ずLINE公式アカウントより空き枠の有無をご確認ください。満枠時にご決済いただいた場合は全額ご返金となり、お手数をおかけします。</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="caution-item-title">無料1ターン体験を経てからのご案内です</span>
+            <span class="caution-item-desc">まずはLINE公式アカウントより無料相談をお申し込みください。1ターンのやりとりで相性を確かめてから、有料プランへご案内しています。</span>
+          </div>
+        </li>
+      </ul>
     </div>
 
     <div class="limit-badge"><span>今月の新規受付　月額1名・ターン制3名</span></div>
@@ -879,6 +962,11 @@
       <div class="eyebrow">SELECT YOUR PLAN</div>
       <h2>どっちのタイプですか？</h2>
       <p>「まず試してみたい」か、「じっくり一緒に取り組みたい」か。</p>
+    </div>
+
+    <div class="precheck-bar">
+      <p><em>決済ボタンを押す前に、もう一度。</em><br>
+      ①noteをご購入済みですか？　②空き枠をご確認いただけましたか？</p>
     </div>
 
     <div class="plan-cards">
@@ -940,6 +1028,9 @@
       </div>
     </div>
     <p class="plans-note">
+      ※ 本サービスはnote購入者限定です<br>
+      ※ 受付人数に限りがあります。ご決済前に必ず空き枠をご確認ください<br>
+      ※ 満枠時・条件を満たさないご決済は全額ご返金いたします<br>
       ※ お申し込み後、24時間以内にご返信します<br>
       ※ 受付枠は予告なく終了することがございます<br>
       ※ 月額プランは初月解約可・途中解約違約金なし
@@ -953,6 +1044,8 @@
     <div class="h2-deco-mark"></div>
     <h2>「怪しい」と思ったあなたへ。<br>よくある疑問に正直に答える。</h2>
   </div>
+  <div class="qa-item"><p class="qa-q">なぜnote購入者限定なの？</p><p class="qa-a">noteに書いた「夫の心理フェーズ」の考え方が、チャット相談の土台になっているから。前提を共有できていない状態だと、限られたターン数のほとんどが説明で終わってしまう。noteを読んだ上で来てもらえれば、最初の1ターンから具体的な行動の話ができる。</p></div>
+  <div class="qa-item"><p class="qa-q">空き枠はどこで確認できる？</p><p class="qa-a">LINE公式アカウントで最新の受付状況をお知らせしている。決済前にひとことメッセージをもらえれば、その場でお返事する。満枠のまま決済されてしまうと返金手続きの手間がお互いに発生するので、必ず先に確認してほしい。</p></div>
   <div class="qa-item"><p class="qa-q">チャットで本当に伝わるの？対面の方がいいのでは？</p><p class="qa-a">チャット形式だからこそ、感情が動いたその瞬間に相談できる。気持ちが落ち着いているときより、何かあって「どうすれば？」となったリアルタイムにアドバイスが届く方が行動につながりやすい。</p></div>
   <div class="qa-item"><p class="qa-q">自分は続けられないかもしれない</p><p class="qa-a">それぞれに合わせたアドバイスで、着実に修復を目指します。弱音を吐くのも立派なステップアップ。まずは3日間プランで試してみてほしい。</p></div>
   <div class="qa-item"><p class="qa-q">ターン制と月額、どっちが合っている？</p><p class="qa-a">「この件だけ集中して聞きたい」という方はターン制が向いている。「感情が揺れるたびに話したい」「愚痴も吐き出せる場所がほしい」という方は月額が向いている。</p></div>
