@@ -14,6 +14,14 @@
   a { color: #C9897A; }
   .back { display: inline-block; margin-top: 24px; color: #C9897A; text-decoration: none; font-size: 0.9em; }
   footer { margin-top: 40px; font-size: 0.8em; color: #999; text-align: center; }
+  .plan-table { width: 100%; border-collapse: collapse; margin: 0; }
+  .plan-table th, .plan-table td { border: 1px solid #e5e5e5; padding: 7px 10px; font-size: 0.95em; }
+  .plan-table th { background: #FBF7F2; width: auto; text-align: center; font-size: 0.9em; }
+  .plan-table td { text-align: center; }
+  ul { margin: 0; padding-left: 1.2em; }
+  li { margin-bottom: 6px; }
+  li:last-child { margin-bottom: 0; }
+  small { color: #777; }
 </style>
 </head>
 <body>
@@ -23,14 +31,44 @@
   <tr><th>所在地</th><td>〒040-0032 北海道函館市新川町2番201</td></tr>
   <tr><th>電話番号</th><td>090-6868-0492<br><small>※ 電話対応が難しい場合はメールにてお問い合わせください</small></td></tr>
   <tr><th>メールアドレス</th><td>hotaru.kawashima@gmail.com</td></tr>
-  <tr><th>サービス名</th><td>ぐうたら妻のための夫婦仲修復チャット相談</td></tr>
-  <tr><th>販売価格</th><td>39,800円（税込）/ 月</td></tr>
+  <tr><th>サービス名</th><td>強い女しか勝たん 夫婦仲修復チャット相談</td></tr>
+  <tr><th>販売価格</th>
+    <td>
+      <table class="plan-table">
+        <tr><th>プラン</th><th>価格（税込）</th><th>相談回数</th></tr>
+        <tr><td>1日間プラン</td><td>5,000円</td><td>1ターン</td></tr>
+        <tr><td>3日間プラン</td><td>9,800円</td><td>3ターンまで</td></tr>
+        <tr><td>7日間プラン</td><td>19,800円</td><td>10ターンまで</td></tr>
+      </table>
+      <small>※ 1ターン＝ご相談1往復（お客様のご相談 → 当方からの返信）</small>
+    </td>
+  </tr>
+  <tr><th>商品代金以外の必要料金</th><td>インターネット接続に必要な通信料はお客様のご負担となります。</td></tr>
+  <tr><th>お申し込みの条件</th>
+    <td>
+      <ul>
+        <li>当方が販売するnoteをご購入いただいた方に限ります。</li>
+        <li>受付人数に限りがあります。ご決済前に、LINE公式アカウントにて空き枠の有無を必ずご確認ください。</li>
+        <li>LINE公式アカウントでの無料1ターン体験を経てからのご案内となります。</li>
+      </ul>
+    </td>
+  </tr>
   <tr><th>支払い方法</th><td>クレジットカード決済（Stripe）</td></tr>
-  <tr><th>支払い時期</th><td>お申し込み時にお支払いいただきます。以降、毎月自動更新となります。</td></tr>
+  <tr><th>支払い時期</th><td>お申し込み時に、プランごとの代金を一括してお支払いいただきます。自動更新・継続課金はございません。</td></tr>
   <tr><th>サービス提供時期</th><td>お支払い完了後、24時間以内にご連絡のうえサービスを開始します。</td></tr>
-  <tr><th>解約について</th><td>初月よりいつでも解約可能です。解約のお申し出は次回更新日の前日までにメールにてご連絡ください。違約金は一切発生しません。</td></tr>
-  <tr><th>返金について</th><td>サービスの性質上、お支払い済みの料金の返金はお受けできません。</td></tr>
+  <tr><th>サービス提供期間</th><td>各プランに定める期間（1日間／3日間／7日間）です。開始日はお客様からの最初のご相談をいただいた日とし、期間内に定められた回数までご相談いただけます。</td></tr>
+  <tr><th>返金・キャンセルについて</th>
+    <td>
+      <ul>
+        <li>サービスの性質上、提供開始後のお客様のご都合による返金・キャンセルはお受けできません。</li>
+        <li>受付枠が満員の状態でご決済いただいた場合、およびお申し込み条件を満たしていないことが判明した場合は、サービスを開始せず、決済手数料を含め全額をご返金いたします。</li>
+        <li>当方の都合によりサービスを提供できなくなった場合は、未提供分に相当する金額をご返金いたします。</li>
+        <li>期間内に使い切れなかった相談回数の繰り越し・返金はお受けできません。</li>
+      </ul>
+    </td>
+  </tr>
   <tr><th>動作環境</th><td>インターネット接続環境およびLINEアプリが必要です。</td></tr>
+  <tr><th>免責事項</th><td>本サービスは夫婦関係に関する助言および情報提供を行うものであり、関係修復その他特定の結果を保証するものではありません。法律相談・医療行為には該当しません。</td></tr>
 </table>
 <a class="back" href="index.html">← サービスページに戻る</a>
 <footer>© 川嶋蛍 All Rights Reserved.</footer>
