@@ -607,6 +607,84 @@
     font-weight: 600;
   }
 
+  /* キーワード案内 */
+  .keyword-guide {
+    border: 2px solid var(--gold);
+    background: rgba(201,168,76,0.08);
+    padding: 34px 28px;
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .keyword-guide-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold-l);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .keyword-guide-lead {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1.7;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .keyword-guide-sub {
+    font-size: 12px;
+    color: rgba(253,246,238,0.55);
+    line-height: 2;
+    margin-bottom: 24px;
+  }
+  .keyword-chip {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--crimson2);
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 14px 40px;
+    margin-bottom: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+  .keyword-chip-note {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(253,246,238,0.4);
+    margin-bottom: 26px;
+  }
+  .keyword-rules {
+    border-top: 1px solid rgba(201,168,76,0.25);
+    padding-top: 22px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .keyword-rules-title {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--gold-l);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .keyword-rule {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 8px 0;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .kr-ng { color: #e88; font-weight: 800; flex-shrink: 0; font-size: 15px; }
+  .kr-ok { color: var(--gold-l); font-weight: 800; flex-shrink: 0; font-size: 15px; }
+  .kr-text { color: rgba(253,246,238,0.75); }
+  .kr-x { color: rgba(253,246,238,0.4); }
+  .kr-o { color: var(--cream); font-weight: 600; }
+
   /* 比較 */
   .compare-wrap { margin-top: 48px; text-align: center; }
   .compare-eyebrow { font-size: 11px; letter-spacing: 0.25em; color: rgba(253,246,238,0.28); margin-bottom: 18px; }
@@ -678,7 +756,7 @@
   <div class="hero-top-line"></div>
   <div class="hero-bottom-line"></div>
 
-  <span class="crown">👠</span>
+  <span class="crown">🫦</span>
   <div class="hero-tag">note購入者限定　チャット相談サービス</div>
 
   <div class="gold-diamond-line">
@@ -902,7 +980,7 @@
 <div class="plans-section">
   <div class="plans-inner">
     <div class="caution-box">
-      <span class="caution-crown">👠</span>
+      <span class="caution-crown">💄</span>
       <div class="caution-title">⚠ 申し込み前に必ずお読みください</div>
       <p class="caution-main">本サービスへのお申し込みには、<br><em>3つの条件</em>がございます。</p>
       <p class="caution-sub">どれかひとつでも満たしていない場合、<br>お申し込みをお受けできません。</p>
@@ -929,6 +1007,31 @@
       </ul>
     </div>
 
+    <div class="keyword-guide">
+      <div class="keyword-guide-eyebrow">— まずはここから —</div>
+      <p class="keyword-guide-lead">無料の1ターン体験を、受け付けています。</p>
+      <p class="keyword-guide-sub">「いきなり有料はこわい」という方へ。<br>まずは1往復、無料で私に相談してみてください。</p>
+
+      <div class="keyword-chip">相談したい</div>
+      <div class="keyword-chip-note">↑ この4文字を、LINE公式アカウントにそのまま送信</div>
+
+      <div class="keyword-rules">
+        <div class="keyword-rules-title">◆ ひとつだけ、お願いがあります ◆</div>
+        <div class="keyword-rule">
+          <span class="kr-ng">✕</span>
+          <span class="kr-text"><span class="kr-x">そうだんしたい</span>（ひらがな）では反応しません</span>
+        </div>
+        <div class="keyword-rule">
+          <span class="kr-ng">✕</span>
+          <span class="kr-text"><span class="kr-x">相談したいです</span>（「です」付き）でも反応しません</span>
+        </div>
+        <div class="keyword-rule">
+          <span class="kr-ok">◎</span>
+          <span class="kr-text"><span class="kr-o">相談したい</span> ——この4文字だけを、コピペするようにそのまま送ってください</span>
+        </div>
+      </div>
+    </div>
+
     <div class="limit-badge"><span>今月の新規受付　残り3名</span></div>
 
     <div class="gold-diamond-line" style="margin-bottom:24px;">
@@ -948,7 +1051,7 @@
 
     <div class="plan-cards">
       <div class="plan-card">
-        <span class="plan-icon">🕯</span>
+        <span class="plan-icon">👠</span>
         <div class="plan-name">1日間プラン</div>
         <div class="plan-price">¥5,000</div>
         <div class="plan-price-unit">1日間・1ターンのみ</div>
